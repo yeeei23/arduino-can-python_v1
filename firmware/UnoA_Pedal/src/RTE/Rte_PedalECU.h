@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 
-// ASW가 BSW 함수를 직접 부르지 않고 RTE 매핑 함수를 호출하도록 함
+// ASW가 BSW 함수를 직접 부르지 않고 RTE 매핑 함수를 호출
 static inline void Rte_Read_RP_AdcRaw_DeAdcValue(uint16_t* data) {
     if (data != NULL) {
         *data = IoHwAb_ReadAdcRaw();

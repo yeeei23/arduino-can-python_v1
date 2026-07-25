@@ -13,7 +13,7 @@
 #include "src/ASW/PedalControl_SWC.h"
 
 
-// 🟢 [추가] Test Task 함수 선언 (loop()보다 위에 위치해야 함)
+//  [추가] Test Task 함수 선언 (loop()보다 위에 위치해야 함)
 void Test_UnoA_Pedal_Task(PedalControl_SWC_Type* pSwc);
 
 #define CS_PIN 10
@@ -76,11 +76,11 @@ void loop() {
 
 
 
-        // 1. ASW Runnable 실행 (가속 페달 개도량 -> 목표 속도 연산)
-
+        
+        // 1. ASW Runnable 실행 (ADC 값 기반 목표 속도 및 Alive Counter 연산)
         Runnable_PedalLogic_20ms(&pedalSwc, &targetSpeedKmh, &aliveCounter);
         // 수정: BSW Self-Test Task가 내부에서 ADC 읽기, ASW 계산, 유효성 검증, 시리얼/LED 출력을 한번에 처리!
-        Test_UnoA_Pedal_Task(&pedalSwc);
+        //Test_UnoA_Pedal_Task(&pedalSwc);
 
 
         // 2. CAN 메시지 생성 및 BSW/CDD 송신 (ID: 0x150)
@@ -97,24 +97,18 @@ void loop() {
 
 
 
-        CDD_MCP2515_WriteMessage(&canPdu);
+        bool isTxOk = CDD_MCP2515_WriteMessage(&canPdu);
 
-
-        //Serial.println(targetSpeedKmh);
-        // ---------------------------------------------------------
-        // 📊 [시리얼 플로터 전용 3선 멀티 그래프 출력]
-        // ⚠️ 각 항목을 콤마(,)로 구분하고 맨 마지막만 println으로 개행합니다.
-        // ---------------------------------------------------------
-        //Serial.print(F("CAN_ID_0x150:"));
-        Serial.print(canPdu.can_id);        // 336 상단 기준선
-        Serial.print(F(","));
-
-        //Serial.print(F("Speed_km_h:"));
-        Serial.print(targetSpeedKmh);      // 0 ~ 240 속도 곡선
-        Serial.print(F(","));
-
-        //Serial.print(F("Alive_Counter:"));
-        Serial.println(aliveCounter);      // 0 ~ 15 톱니바퀴 파형
+        // 3. 시리얼 모니터 디버깅 출력 (속도, Alive Counter, CAN 송신 성공 여부)
+        Serial.print(F("[UnoA Tx] Speed: "));
+        if (targetSpeedKmh < 10) Serial.print(F("  "));
+        else if (targetSpeedKmh < 100) Serial.print(F(" "));
+        Serial.print(targetSpeedKmh);
+        Serial.print(F(" km/h | Alive: "));
+        if (aliveCounter < 10) Serial.print(F(" "));
+        Serial.print(aliveCounter);
+        Serial.print(F(" | Tx Status: "));
+        Serial.println(isTxOk ? F("OK") : F("FAIL"));
         
  
 

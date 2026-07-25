@@ -1,0 +1,61 @@
+#include <SPI.h>
+#include "src/RTE/RTE_Gateway.h"
+
+GatewayControl_SWC_Type gatewaySwc;
+unsigned long lastTaskTime = 0;
+const unsigned long TASK_INTERVAL = 20; // 20ms 주기 (50Hz)
+
+void setup() {
+    Serial.begin(115200);
+    while (!Serial) { ; } // 시리얼 연결 대기
+
+    RTE_Gateway_Init(&gatewaySwc);
+
+    Serial.println(F("================================================"));
+    Serial.println(F("   UnoC_Gateway Serial Monitor Debugger Starting   "));
+    Serial.println(F("================================================"));
+    Serial.println(F("D4: Orange LED (Seatbelt / UnoB DTC)"));
+    Serial.println(F("D5: Red LED    (Engine   / UnoA DTC)"));
+    Serial.println(F("------------------------------------------------"));
+}
+
+void loop() {
+    unsigned long currentTime = millis();
+
+    // ⚡ 1. D2 외부 인터럽트 기반 CAN 메시지 수신 (MCP2515 -> RTE -> ASW)
+    RTE_Gateway_ProcessCanRx(&gatewaySwc);
+
+    // 2. 20ms 주기 스케줄링 (ASW 타임아웃 검증 & 디버그 출력)
+    if (currentTime - lastTaskTime >= TASK_INTERVAL) {
+        lastTaskTime = currentTime;
+
+        // ASW 100ms Timeout & Fail-Safe 검증
+        Runnable_GatewayLogic_20ms(&gatewaySwc);
+
+        // H/W 경고등 제어 (D4: 주황-UnoB / D5: 빨강-UnoA)
+        RTE_Gateway_UpdateFeedback(&gatewaySwc);
+
+        // 🔍 [시리얼 모니터 디버깅 전용 C++ 출력]
+        Serial.print(F("[UnoA] Speed: "));
+        if (gatewaySwc.unoA_Speed < 10) Serial.print(F("  "));
+        else if (gatewaySwc.unoA_Speed < 100) Serial.print(F(" "));
+        Serial.print(gatewaySwc.unoA_Speed);
+        Serial.print(F(" km/h | Alive: "));
+        if (gatewaySwc.unoA_Alive < 10) Serial.print(F(" "));
+        Serial.print(gatewaySwc.unoA_Alive);
+        
+        // Uno A (엔진 경고등 - D5 Red) 상태
+        if (gatewaySwc.unoA_NodeOut) {
+            Serial.print(F(" | Engine DTC: [FAIL (D5 RED ON)] "));
+        } else {
+            Serial.print(F(" | Engine DTC: [OK]             "));
+        }
+
+        // Uno B (안전벨트 경고등 - D4 Orange) 상태
+        if (gatewaySwc.unoB_NodeOut) {
+            Serial.println(F("| Seatbelt DTC: [FAIL (D4 ORANGE ON)]"));
+        } else {
+            Serial.println(F("| Seatbelt DTC: [OK]"));
+        }
+    }
+}
