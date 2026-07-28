@@ -1,6 +1,7 @@
 #include "GatewayControl_SWC.h"
 
 #define TIMEOUT_THRESHOLD_MS 100 // 100ms 타임아웃 판정
+#define RECOVERY_STABLE_CNT  5  // 5회(약 100ms) 연속 수신 시 소생
 
 void GatewayControl_SWC_Init(GatewayControl_SWC_Type* pSwc) {
     pSwc->unoA_Speed = 0;
@@ -21,10 +22,32 @@ void Runnable_GatewayLogic_20ms(GatewayControl_SWC_Type* pSwc) {
     if (currentMs - pSwc->unoA_LastRxTime > TIMEOUT_THRESHOLD_MS) {
         pSwc->unoA_NodeOut = true;
         pSwc->unoA_Speed = 0; // Fail-Safe 속도 0 고정
+        pSwc->unoA_SuccessCount = 0;    // [추가] 단선 즉시 카운터 리셋!
+    }
+    else {
+        // 🟢 2. 패킷 수신 중인 상태
+        if (pSwc->unoA_NodeOut) {
+            // NodeOut 상태였다면, 연속 수신 카운터가 5(지정 횟수)에 도달해야만 소생 인정
+            if (pSwc->unoA_SuccessCount >= RECOVERY_STABLE_CNT) {
+                pSwc->unoA_NodeOut = false;  // 🎉 단계적 소생 완료 (정상 복구)
+                pSwc->unoA_SuccessCount = 0; // 카운터 리셋
+            }
+        }
     }
 
     // Uno B 타임아웃 (Node Out -> DTC 발생)
     if (currentMs - pSwc->unoB_LastRxTime > TIMEOUT_THRESHOLD_MS) {
         pSwc->unoB_NodeOut = true;
+        pSwc->unoB_SuccessCount = 0;    // [추가] 단선 즉시 카운터 리셋!
+    }
+    else {
+        // 🟢 2. 패킷 수신 중인 상태
+        if (pSwc->unoB_NodeOut) {
+            // NodeOut 상태였다면, 연속 수신 카운터가 5(지정 횟수)에 도달해야만 소생 인정
+            if (pSwc->unoB_SuccessCount >= RECOVERY_STABLE_CNT) {
+                pSwc->unoB_NodeOut = false;  // 🎉 단계적 소생 완료 (정상 복구)
+                pSwc->unoB_SuccessCount = 0; // 카운터 리셋
+            }
+        }
     }
 }

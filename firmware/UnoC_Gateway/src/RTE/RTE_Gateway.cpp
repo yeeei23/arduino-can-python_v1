@@ -1,4 +1,5 @@
 #include "RTE_Gateway.h"
+#define RECOVERY_STABLE_CNT  5  // 5회(약 100ms) 연속 수신 시 소생
 
 void RTE_Gateway_Init(GatewayControl_SWC_Type* pSwc) {
     IoHwAb_Init();
@@ -42,13 +43,30 @@ void RTE_Gateway_ProcessCanRx(GatewayControl_SWC_Type* pSwc) {
             pSwc->unoA_Speed = rxPdu.data[0];
             pSwc->unoA_Alive = rxPdu.data[1];
             pSwc->unoA_LastRxTime = currentMs;
-            pSwc->unoA_NodeOut = false; // 수신 성공 시 NodeOut 해제 (DTC 정상)
-        } 
+            //pSwc->unoA_NodeOut = false; // 수신 성공 시 NodeOut 해제 (DTC 정상)
+            // 📌 [수정] unoA_NodeOut = false; 제거!
+            // 단선(NodeOut == true) 상태일 때만 소생을 위한 연속 수신 카운터 올림
+            if (pSwc->unoA_NodeOut) {
+                if (pSwc->unoA_SuccessCount < RECOVERY_STABLE_CNT) {
+                    pSwc->unoA_SuccessCount++;
+                }
+            } else {
+                pSwc->unoA_SuccessCount = 0; // 이미 정상 통신 중이면 0 유지
+            }
+        }
         else if (rxPdu.can_id == 0x160) { // Uno B (Sensor)
             pSwc->unoB_Data = rxPdu.data[0];
             pSwc->unoB_Alive = rxPdu.data[1];
             pSwc->unoB_LastRxTime = currentMs;
-            pSwc->unoB_NodeOut = false;
+            
+            //pSwc->unoB_NodeOut = false;
+            if (pSwc->unoB_NodeOut) {
+                if (pSwc->unoB_SuccessCount < RECOVERY_STABLE_CNT) {
+                    pSwc->unoB_SuccessCount++;
+                }
+            } else {
+                pSwc->unoB_SuccessCount = 0;
+            }
         }
     }
 }
@@ -56,5 +74,6 @@ void RTE_Gateway_ProcessCanRx(GatewayControl_SWC_Type* pSwc) {
 
 // ASW의 DTC 상태를 BSW IoHwAb(경고등 LED)로 전달
 void RTE_Gateway_UpdateFeedback(const GatewayControl_SWC_Type* pSwc) {
+    if (pSwc == NULL) return;
     IoHwAb_SetDtcLeds(pSwc->unoA_NodeOut, pSwc->unoB_NodeOut);
 }
