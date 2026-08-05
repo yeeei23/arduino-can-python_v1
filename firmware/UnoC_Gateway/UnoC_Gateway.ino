@@ -35,7 +35,7 @@ void loop() {
         // H/W 경고등 제어 (D4: 주황-UnoB / D5: 빨강-UnoA)
         RTE_Gateway_UpdateFeedback(&gatewaySwc);
 
-        // 🔍 [시리얼 모니터 디버깅 전용 C++ 출력]
+        // 1. [Uno A 노드 데이터 출력]
         Serial.print(F("[UnoA] Speed: "));
         if (gatewaySwc.unoA_Speed < 10) Serial.print(F("  "));
         else if (gatewaySwc.unoA_Speed < 100) Serial.print(F(" "));
@@ -43,19 +43,33 @@ void loop() {
         Serial.print(F(" km/h | Alive: "));
         if (gatewaySwc.unoA_Alive < 10) Serial.print(F(" "));
         Serial.print(gatewaySwc.unoA_Alive);
+
+        // 🔍 [Uno B 안전벨트 상태 & Alive & DTC 출력]
+        Serial.print(F("    || [UnoB] Belt: "));
+        if (gatewaySwc.unoB_NodeOut) {
+            Serial.print(F("[NODE_OUT]"));
+        } else {
+            // unoB_Data: 0x01 (체결) / 0x00 (미체결)
+            if (gatewaySwc.unoB_Data == 0x01) {
+                Serial.print(F("BUCKLED(1)  "));
+            } else {
+                Serial.print(F("UNBUCKLED(0)"));
+            }
+        }
+
         
         // Uno A (엔진 경고등 - D5 Red) 상태
         if (gatewaySwc.unoA_NodeOut) {
-            Serial.print(F(" | Engine DTC: [FAIL (D5 RED ON)] "));
+            Serial.print(F("     ||  Engine DTC: [FAIL (RED ON)]"));
         } else {
-            Serial.print(F(" | Engine DTC: [OK]             "));
+            Serial.print(F("     ||  Engine DTC: [OK]           "));
         }
 
         // Uno B (안전벨트 경고등 - D4 Orange) 상태
         if (gatewaySwc.unoB_NodeOut) {
-            Serial.println(F("| Seatbelt DTC: [FAIL (D4 ORANGE ON)]"));
+            Serial.println(F("  |  Seatbelt DTC: [FAIL (ORANGE ON)]  "));
         } else {
-            Serial.println(F("| Seatbelt DTC: [OK]"));
+            Serial.println(F("  |  Seatbelt DTC: [OK]  "));
         }
     }
 }
