@@ -1,0 +1,18 @@
+====================================================================
+           AUTOMOTIVE CAN BUS SYSTEM SUMMARY REPORT (GATEWAY ONLY)
+====================================================================
+Session ID: 20260805_223022
+
+[1] CAN GATEWAY THROUGHPUT & PERIODICITY
+    - Total Processed Frames       : 5041 Frames
+    - Gateway Rx Cycle (Uno A)     : Avg 12.51 ms
+
+[2] RELIABILITY & PACKET LOSS (ALIVE COUNTER)
+    - Alive Drops (Uno A / Uno B)  : A(0회), B(0회)
+    - Total Loss Rate              : 0.000 %
+
+[3] FAULT DIAGNOSTICS & RECOVERY (SoSaeng)
+    - DTC Failure Occurrences       : Engine (171회), Seatbelt (171회)
+    - Avg SoSaeng Recovery Time    : 1709.86 ms (5-Frame Debounce)
+    - Fail-Safe Status (60km/h)    : PASS
+====================================================================

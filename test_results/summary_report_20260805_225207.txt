@@ -1,0 +1,20 @@
+====================================================================
+           AUTOMOTIVE CAN BUS GATEWAY REPORT (UNO C)
+====================================================================
+Session ID: 20260805_225207
+
+[1] CAN GATEWAY THROUGHPUT & PERIODICITY
+    - Total Processed Frames       : 638 Frames
+    - Gateway Rx Cycle (Uno A)     : Avg 28.59 ms (Freq: 34.97 Hz)
+    - Gateway Rx Cycle (Uno B)     : Avg 28.59 ms (Freq: 34.97 Hz)
+
+[2] RELIABILITY & PACKET LOSS (ALIVE COUNTER)
+    - Alive Drops (Uno A / Uno B)  : Uno A (49회), Uno B (0회)
+    - Total Loss Rate              : 3.840 %
+
+[3] FAULT DIAGNOSTICS & RECOVERY (SoSaeng)
+    - Engine DTC (Uno A)           : 1회 | Occurrence Timestamps: 22:52:24.674
+    - Seatbelt DTC (Uno B)         : 0회 | Occurrence Timestamps: None
+    - Avg SoSaeng Recovery Time    : 841.44 ms
+    - Fail-Safe Enforced (60km/h)  : PASS
+====================================================================

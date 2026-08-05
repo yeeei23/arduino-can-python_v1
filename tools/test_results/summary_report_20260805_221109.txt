@@ -1,0 +1,21 @@
+====================================================================
+           AUTOMOTIVE CAN BUS SYSTEM SUMMARY REPORT
+====================================================================
+Session ID: 20260805_221109
+
+[1] LATENCY PERFORMANCE ANALYSIS
+    - Uno B -> Uno C Direct Latency  : Avg 15890.98 ms | Max 31810.97 ms
+    - Uno A -> Uno B -> Uno C Chain  : Avg 15143.88 ms | Max 30273.71 ms
+
+[2] DYNAMIC TASK PERIODICITY
+    - Uno B Average Transmission Period : 0.00 ms
+
+[3] RELIABILITY & PACKET LOSS
+    - Total Processed Frames       : 1599 Frames
+    - Alive Counter Frame Drop     : 1589 Drops (Loss Rate: 99.375%)
+
+[4] FAULT DIAGNOSTICS & RECOVERY (SoSaeng)
+    - DTC Failure Counts           : Uno A (0회), Uno B (0회)
+    - Avg SoSaeng Recovery Time    : 0.00 ms (5-Frame Debounce)
+    - Fail-Safe Enforced (60km/h)  : N/A
+====================================================================
