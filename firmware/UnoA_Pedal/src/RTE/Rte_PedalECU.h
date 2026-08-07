@@ -1,7 +1,7 @@
 #ifndef RTE_PEDALECU_H
 #define RTE_PEDALECU_H
 
-#include <Arduino.h>   // NULL 매크로 및 타입 정의 포함
+#include <Arduino.h>  
 #include <stdint.h>
 #include "../BSW/IoHwAb.h"
 
@@ -18,6 +18,11 @@ static inline void Rte_Read_RP_AdcRaw_DeAdcValue(uint16_t* data) {
 
 static inline void Rte_Call_NOP_ToggleLed(void) {
     IoHwAb_ToggleLed();
+}
+
+// LED 상태 직접 제어 (통신 실패 시 OFF 제어용: 1=ON, 0=OFF)
+static inline void Rte_Call_NOP_SetLed(uint8_t state) {
+    IoHwAb_SetLed(state);
 }
 
 #ifdef __cplusplus

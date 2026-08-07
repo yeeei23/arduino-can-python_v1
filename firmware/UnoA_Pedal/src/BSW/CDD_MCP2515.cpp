@@ -7,7 +7,7 @@
 // CDD 내부 MCP2515 객체 캡슐화 (외부 ASW/RTE에 노출 안 됨)
 static MCP2515 mcp2515(CS_PIN);
 
-// 🔑 C++ 컴파일러가 함수 이름을 바꾸지 않도록 C 링크 규칙 적용
+// C++ 컴파일러가 함수 이름을 바꾸지 않도록 C 링크 규칙 적용
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -34,7 +34,7 @@ bool CDD_MCP2515_WriteMessage(const Can_PduType* pdu) {
     return (mcp2515.sendMessage(&frame) == MCP2515::ERROR_OK);
 }
 
-bool CDD_MCP2515_ReadMessage(Can_PduType* pdu) {
+/*bool CDD_MCP2515_ReadMessage(Can_PduType* pdu) {
     if (pdu == NULL) return false;
 
     struct can_frame frame;
@@ -47,7 +47,7 @@ bool CDD_MCP2515_ReadMessage(Can_PduType* pdu) {
         return true;
     }
     return false; // 수신된 패킷 없음
-}
+}*/
 
 #ifdef __cplusplus
 }

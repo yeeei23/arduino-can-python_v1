@@ -14,7 +14,7 @@ extern "C" {
 #endif
 
 void PedalControl_SWC_Init(PedalControl_SWC_Type* me);
-void Runnable_PedalLogic_20ms(PedalControl_SWC_Type* me, uint8_t* outPedalPercent, uint8_t* outAliveCounter);
+void Runnable_PedalLogic_20ms(PedalControl_SWC_Type* me, uint8_t* outTargetSpeed, uint8_t* outAliveCounter);
 
 #ifdef __cplusplus
 }

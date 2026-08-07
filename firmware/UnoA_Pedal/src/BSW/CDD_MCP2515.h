@@ -16,7 +16,7 @@ typedef struct {
 extern "C" {
 #endif
 
-// CDD MCP2515 API 명세
+// CDD MCP2515 API 
 void CDD_MCP2515_Init(void);
 bool CDD_MCP2515_WriteMessage(const Can_PduType* pdu);
 bool CDD_MCP2515_ReadMessage(Can_PduType* pdu);

@@ -13,6 +13,7 @@ extern "C" {
 void IoHwAb_Init(void);
 uint16_t IoHwAb_ReadAdcRaw(void);
 void IoHwAb_ToggleLed(void);
+void IoHwAb_SetLed(uint8_t state);
 
 #ifdef __cplusplus
 }
