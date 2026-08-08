@@ -39,6 +39,31 @@ metrics = {
     "prev_sb_fail": False,
 }
 
+# Uno B의 Alive Counter도 파싱하도록 정규식 수정
+LOG_PATTERN = re.compile(
+    r"\[UnoA\]\s+Speed:\s*(?P<speed>\d+)\s*km/h\s*\|\s*Alive:\s*(?P<alive_a>\d+)\s*\|\|\s*"
+    r"\[UnoB\]\s+Belt:\s*(?P<belt>[^\|]+)\|\s*Alive:\s*(?P<alive_b>\d+)\s*\|\|\s*"  # Alive B 추가
+    r"Engine DTC:\s*\[(?P<eng_dtc>[^\]]+)\]\s*\|\s*"
+    r"Seatbelt DTC:\s*\[(?P<sb_dtc>[^\]]+)\]"
+)
+
+metrics = {
+    "total_frames": 0,
+    "intervals_a": [],  # Uno A 주기 배열 분리
+    "intervals_b": [],  # Uno B 주기 배열 분리
+    "dtc_events": {"Uno_A": 0, "Uno_B": 0},
+    "dtc_timestamps": {"Uno_A": [], "Uno_B": []},
+    "so_saeng_times": [],
+    "failsafe_passed": False,
+    "alive_drops": {"Uno_A": 0, "Uno_B": 0},
+    "last_alive_a": None,
+    "last_alive_b": None,
+    "last_rx_time_a": None,
+    "last_rx_time_b": None,  # Uno B 데이터 변경 시점 기록용
+    "prev_eng_fail": False,
+    "prev_sb_fail": False,
+}
+
 dtc_start_time = None
 
 
@@ -106,7 +131,7 @@ def format_ts(ts_list):
 
 def generate_summary():
     intervals = metrics["intervals"]
-    recoveries = metrics["so_saeng_times"]
+    recoveries = metrics["recovery_times"]
 
     avg_interval = sum(intervals) / len(intervals) if intervals else 0.0
     avg_recovery = sum(recoveries) / len(recoveries) if recoveries else 0.0

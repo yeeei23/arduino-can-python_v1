@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <mcp2515.h>
+#include <SPI.h>
 
 #include "IoHwAb.h"
 

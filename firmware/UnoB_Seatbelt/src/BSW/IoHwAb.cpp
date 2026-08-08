@@ -1,12 +1,9 @@
 #include "IoHwAb.h"
 
-#define PIN_DIP_SW       6   // DIP Switch Input (Internal Pull-up)
-#define PIN_HEARTBEAT    4   // Heartbeat White LED
-
 void IoHwAb_Init(void) {
     pinMode(PIN_DIP_SW, INPUT_PULLUP);
-    pinMode(PIN_HEARTBEAT, OUTPUT);
-    digitalWrite(PIN_HEARTBEAT, LOW);
+    pinMode(PIN_GREEN_LED, OUTPUT);
+    digitalWrite(PIN_GREEN_LED, LOW);
 }
 
 // DIP Switch 읽기 (ON 시 LOW 반환 -> true)
@@ -14,9 +11,13 @@ bool IoHwAb_ReadDipSwitch(void) {
     return (digitalRead(PIN_DIP_SW) == LOW);
 }
 
-// White LED 하트비트 토글
-void IoHwAb_ToggleHeartbeatLed(void) {
-    static bool state = false;
-    state = !state;
-    digitalWrite(PIN_HEARTBEAT, state ? HIGH : LOW);
+// Green LED 토글
+void IoHwAb_ToggleLed(void) {
+    bool currentState = digitalRead(PIN_GREEN_LED);
+    digitalWrite(PIN_GREEN_LED, !currentState);
+}
+
+// Green LED 상태 설정
+void IoHwAb_SetLed(uint8_t state) {
+    digitalWrite(PIN_GREEN_LED, state ? HIGH : LOW);
 }
