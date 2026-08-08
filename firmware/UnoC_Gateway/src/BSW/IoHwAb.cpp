@@ -11,6 +11,6 @@ void IoHwAb_SetDtcLeds(bool unoA_NodeOut, bool unoB_NodeOut) {
     // Uno A (페달) 통신 끊김 -> 빨간색 엔진 경고등(D5) 점등
     digitalWrite(LED_UNOA_DTC_PIN, unoA_NodeOut ? HIGH : LOW);
 
-    // Uno B (센서) 통신 끊김 -> 주황색 안전벨트 경고등(D4) 점등
+    // Uno B (안전벨트) 통신 끊김 -> 주황색 안전벨트 경고등(D4) 점등
     digitalWrite(LED_UNOB_DTC_PIN, unoB_NodeOut ? HIGH : LOW);
 }

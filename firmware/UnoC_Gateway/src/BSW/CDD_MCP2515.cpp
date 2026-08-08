@@ -1,13 +1,11 @@
 #include "CDD_MCP2515.h"
-#include <SPI.h>
-
 
 #define CAN_CS_PIN 10
 
 MCP2515 mcp2515(CAN_CS_PIN);
 volatile bool g_canCanRxFlag = false;
 
-// ⚡ ISR: MCP2515가 메시지 수신 시 D2 핀을 LOW로 떨어뜨려 즉시 실행
+// ISR: MCP2515가 메시지 수신 시 D2 핀을 LOW로 떨어뜨려 즉시 실행
 void MCP2515_ISR(void) {
     g_canCanRxFlag = true;
 }
@@ -25,17 +23,17 @@ void CDD_MCP2515_Init(void) {
 bool CDD_MCP2515_ReadMessage(Can_PduType* pPdu) {
     if (pPdu == NULL) return false;
 
-    // ⚡ 1. 레지스터 상태 확인
+    // 1. 레지스터 상태 확인
     uint8_t irq = mcp2515.getInterrupts();
     uint8_t eflg = mcp2515.getErrorFlags();
 
-    // ⚡ 2. ERRIF 또는 버퍼 오버플로우 발생 시 라이브러리 정식 함수(clearRXnOVR)로 클리어
+    // 2. ERRIF 또는 버퍼 오버플로우 발생 시 라이브러리 정식 함수(clearRXnOVR)로 클리어
     if ((irq & MCP2515::CANINTF_ERRIF) || (eflg & 0xC0) || (eflg & 0x20)) {
         mcp2515.clearInterrupts();
-        mcp2515.clearRXnOVR(); // 👈 [수정] RX0, RX1 오버플로우 플래그 일괄 클리어
+        mcp2515.clearRXnOVR(); // [추가] RX0, RX1 오버플로우 플래그 일괄 클리어
     }
 
-    // ⚡ 3. 수신 버퍼에서 메시지 읽기
+    // 3. 수신 버퍼에서 메시지 읽기
     struct can_frame frame;
     if (mcp2515.readMessage(&frame) == MCP2515::ERROR_OK) {
         pPdu->can_id  = frame.can_id;
@@ -59,7 +57,7 @@ bool CDD_MCP2515_ReadMessage(Can_PduType* pPdu) {
 /*bool CDD_MCP2515_ReadMessage(Can_PduType* pPdu) {
     if (pPdu == NULL) return false;
 
-    // 📌 [핵심 수정 1] 인터럽트 플래그 또는 버퍼 수신 여부 확인
+    //  인터럽트 플래그 또는 버퍼 수신 여부 확인
     if (g_canCanRxFlag || (digitalRead(CAN_INT_PIN) == LOW)) {
         struct can_frame frame;
         
@@ -70,7 +68,7 @@ bool CDD_MCP2515_ReadMessage(Can_PduType* pPdu) {
                 pPdu->data[i] = frame.data[i];
             }
 
-            // 📌 [핵심 수정 2] 수신 완료 후 플래그 리셋 (다음 인터럽트 대기)
+            // 수신 완료 후 플래그 리셋 (다음 인터럽트 대기)
             g_canCanRxFlag = false;
             return true;
         }

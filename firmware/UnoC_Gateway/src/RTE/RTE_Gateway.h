@@ -1,6 +1,8 @@
 #ifndef RTE_GATEWAY_H
 #define RTE_GATEWAY_H
 
+#include <SPI.h>
+
 #include "../BSW/CDD_MCP2515.h"
 #include "../BSW/IoHwAb.h"
 #include "../ASW/GatewayControl_SWC.h"

@@ -12,14 +12,14 @@ void setup() {
 
     RTE_Gateway_Init(&gatewaySwc);
 
-    /*
+    
     Serial.println(F("================================================"));
     Serial.println(F("   UnoC_Gateway Serial Monitor Debugger Starting   "));
     Serial.println(F("================================================"));
     Serial.println(F("D4: Orange LED (Seatbelt / UnoB DTC)"));
     Serial.println(F("D5: Red LED    (Engine   / UnoA DTC)"));
     Serial.println(F("------------------------------------------------"));
-    */
+    
 }
 
 void loop() {
@@ -54,7 +54,7 @@ void loop() {
             Serial.print(F("[NODE_OUT]  "));
         } else {
             // unoB_Data: 0x01 (체결) / 0x00 (미체결)
-            if (gatewaySwc.unoB_Data == 0x01) {
+            if (gatewaySwc.unoB_BeltStatus == 0x01) {
                 Serial.print(F("BUCKLED(1)  "));
             } else {
                 Serial.print(F("UNBUCKLED(0)"));

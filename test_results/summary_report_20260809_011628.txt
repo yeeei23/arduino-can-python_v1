@@ -1,26 +1,26 @@
 +-------------------------------------------------------------------------------------------------------+
 |                                  AUTOMOTIVE CAN GATEWAY TEST REPORT                                   |
 +-------------------------------------------------------------------------------------------------------+
-  Session ID           : 20260809_005133
-  Total Execution Time : 27.98 sec (0m 27s)
-  Total Frames Rx      : 1324 Frames
+  Session ID           : 20260809_011628
+  Total Execution Time : 13.84 sec (0m 13s)
+  Total Frames Rx      : 616 Frames
 +-------------------------------------------------------------------------------------------------------+
 
 [1] BUS THROUGHPUT & NODE PERIODICITY ANALYSIS
 +--------------------------+------------------+-------------------+-------------------+--------------------+
 | Node Identifier          | Target Cycle(ms) | Total Avg Cycle   | Normal Avg Cycle  | Normal Error Rate  |
 +--------------------------+------------------+-------------------+-------------------+--------------------+
-| Gateway Loop (Uno C)     | 20.00 ms         |          20.00 ms |          20.00 ms |            -0.00 %   |
-| Uno A Rx (Engine ECU)    | 20.00 ms         |          31.51 ms |          20.03 ms |          +0.13 %   |
-| Uno B Rx (Seatbelt ECU)  | 50.00 ms         |          62.60 ms |          50.00 ms |          -0.00 %   |
+| Gateway Loop (Uno C)     | 20.00 ms         |          19.99 ms |          19.99 ms |            -0.04 %   |
+| Uno A Rx (Engine ECU)    | 20.00 ms         |          42.79 ms |          20.01 ms |          +0.04 %   |
+| Uno B Rx (Seatbelt ECU)  | 50.00 ms         |          50.04 ms |          50.06 ms |          +0.13 %   |
 +--------------------------+------------------+-------------------+-------------------+--------------------+
 
 [2] FAULT DIAGNOSTICS & RECOVERY (ISO 26262 / UDS Verification)
 +--------------------------+--------------------+---------------------------------------------------------------+
 | Diagnostic Item          | Fault Count        | Occurrence Timestamps / Details                               |
 +--------------------------+--------------------+---------------------------------------------------------------+
-| Engine DTC (Uno A)       |                  3 | 00:51:39.444, 00:51:42.206, 00:51:48.085                      |
-| Seatbelt DTC (Uno B)     |                  2 | 00:51:52.365, 00:51:56.365                                    |
-| Fault Recovery Time      |         3003.68 ms | Debounce & Fail-Safe Recovery Time                            |
+| Engine DTC (Uno A)       |                  2 | 01:16:31.000, 01:16:37.940                                    |
+| Seatbelt DTC (Uno B)     |                  0 | None                                                          |
+| Fault Recovery Time      |         3229.70 ms | Debounce & Fail-Safe Recovery Time                            |
 | Fail-Safe Enforcement    | PASS               | Enforced Speed: 60 km/h                                       |
 +--------------------------+--------------------+---------------------------------------------------------------+

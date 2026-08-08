@@ -1,4 +1,5 @@
 #include "RTE_Gateway.h"
+
 #define RECOVERY_STABLE_CNT  5  // 5회(약 100ms) 연속 수신 시 소생
 
 void RTE_Gateway_Init(GatewayControl_SWC_Type* pSwc) {
@@ -12,7 +13,7 @@ void RTE_Gateway_Init(GatewayControl_SWC_Type* pSwc) {
 void RTE_Gateway_ProcessCanRx(GatewayControl_SWC_Type* pSwc) {
     Can_PduType rxPdu;
 
-    // ⚡ g_canCanRxFlag 조건문을 제거하고, CDD_MCP2515_ReadMessage가 true를 반환하는 동안 계속 읽어옴
+    //  CDD_MCP2515_ReadMessage가 true를 반환하는 동안 계속 읽어옴
     while (CDD_MCP2515_ReadMessage(&rxPdu)) {
         uint32_t currentMs = millis();
 
@@ -20,8 +21,7 @@ void RTE_Gateway_ProcessCanRx(GatewayControl_SWC_Type* pSwc) {
             pSwc->unoA_Speed = rxPdu.data[0];
             pSwc->unoA_Alive = rxPdu.data[1];
             pSwc->unoA_LastRxTime = currentMs;
-            //pSwc->unoA_NodeOut = false; // 수신 성공 시 NodeOut 해제 (DTC 정상)
-            // 📌 [수정] unoA_NodeOut = false; 제거!
+         
             // 단선(NodeOut == true) 상태일 때만 소생을 위한 연속 수신 카운터 올림
             if (pSwc->unoA_NodeOut) {
                 if (pSwc->unoA_SuccessCount < RECOVERY_STABLE_CNT) {
@@ -31,18 +31,18 @@ void RTE_Gateway_ProcessCanRx(GatewayControl_SWC_Type* pSwc) {
                 pSwc->unoA_SuccessCount = 0; // 이미 정상 통신 중이면 0 유지
             }
         }
-        else if (rxPdu.can_id == 0x160) { // Uno B (Sensor)
-            pSwc->unoB_Data = rxPdu.data[0];
+        else if (rxPdu.can_id == 0x160) { // Uno B (Seatbelt)
+            pSwc->unoB_BeltStatus = rxPdu.data[0];
             pSwc->unoB_Alive = rxPdu.data[1];
             pSwc->unoB_LastRxTime = currentMs;
             
-            //pSwc->unoB_NodeOut = false;
+            // 단선(NodeOut == true) 상태일 때만 소생을 위한 연속 수신 카운터 올림
             if (pSwc->unoB_NodeOut) {
                 if (pSwc->unoB_SuccessCount < RECOVERY_STABLE_CNT) {
                     pSwc->unoB_SuccessCount++;
                 }
             } else {
-                pSwc->unoB_SuccessCount = 0;
+                pSwc->unoB_SuccessCount = 0; // 이미 정상 통신 중이면 0 유지
             }
         }
     }
