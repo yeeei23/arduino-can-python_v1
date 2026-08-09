@@ -3,9 +3,10 @@ import os
 import re
 import serial
 import time
+import statistics
 
 # 📌 게이트웨이(우노 C) COM 포트 설정
-UNO_C_PORT = "COM5"
+UNO_C_PORT = "COM10"  # 실제 연결된 포트로 변경 필요
 BAUD_RATE = 115200
 
 # 결과 파일 저장 경로
@@ -123,14 +124,28 @@ def parse_uno_c_line(line, now_sec, timestamp_str):
 def format_ts(ts_list):
     return ", ".join(ts_list) if ts_list else "None"
 
+def calc_jitter_stats(intervals, target_ms):
+    """주기 리스트를 받아 평균, 최소, 최대, 표준편차, 오차율을 반환하는 함수"""
+    if not intervals:
+        return 0.0, 0.0, 0.0, 0.0, 0.0
+    
+    avg_val = sum(intervals) / len(intervals)
+    min_val = min(intervals)
+    max_val = max(intervals)
+    std_val = statistics.stdev(intervals) if len(intervals) > 1 else 0.0
+    err_rate = ((avg_val - target_ms) / target_ms) * 100.0
+    
+    return avg_val, min_val, max_val, std_val, err_rate
+
 
 def generate_summary():
     elapsed_sec = time.time() - start_time if start_time else 0.0
 
-    # 게이트웨이 루프
-    loop_arr = metrics["intervals_loop"]
-    avg_loop = sum(loop_arr) / len(loop_arr) if loop_arr else 0.0
-    err_loop = ((avg_loop - 20.0) / 20.0 * 100.0) if avg_loop > 0 else 0.0
+   # 1. 노드별 수신 주기 및 Jitter 통계 연산
+    avg_loop, min_loop, max_loop, std_loop, err_loop = calc_jitter_stats(metrics["intervals_loop"], 20.0)
+    avg_a_norm, min_a, max_a, std_a, err_a_norm = calc_jitter_stats(metrics["intervals_a_normal"], 20.0)
+    avg_b_norm, min_b, max_b, std_b, err_b_norm = calc_jitter_stats(metrics["intervals_b_normal"], 50.0)
+
 
     # Uno A
     a_tot = metrics["intervals_a_total"]
@@ -146,9 +161,10 @@ def generate_summary():
     avg_b_norm = sum(b_norm) / len(b_norm) if b_norm else 0.0
     err_b_norm = ((avg_b_norm - 50.0) / 50.0 * 100.0) if avg_b_norm > 0 else 0.0
 
-    recoveries = metrics["recovery_times"]
-    avg_recovery = sum(recoveries) / len(recoveries) if recoveries else 0.0
-
+    range_loop = f"{min_loop:.1f} / {max_loop:.1f}"
+    range_a = f"{min_a:.1f} / {max_a:.1f}"
+    range_b = f"{min_b:.1f} / {max_b:.1f}"
+    
     total_frames = metrics["total_frames"]
 
     report_content = f"""+-------------------------------------------------------------------------------------------------------+
@@ -159,22 +175,21 @@ def generate_summary():
   Total Frames Rx      : {total_frames} Frames
 +-------------------------------------------------------------------------------------------------------+
 
-[1] BUS THROUGHPUT & NODE PERIODICITY ANALYSIS
-+--------------------------+------------------+-------------------+-------------------+--------------------+
-| Node Identifier          | Target Cycle(ms) | Total Avg Cycle   | Normal Avg Cycle  | Normal Error Rate  |
-+--------------------------+------------------+-------------------+-------------------+--------------------+
-| Gateway Loop (Uno C)     | 20.00 ms         | {avg_loop:14.2f} ms | {avg_loop:14.2f} ms |           {err_loop:+6.2f} %   |
-| Uno A Rx (Engine ECU)    | 20.00 ms         | {avg_a_tot:14.2f} ms | {avg_a_norm:14.2f} ms |         {err_a_norm:+6.2f} %   |
-| Uno B Rx (Seatbelt ECU)  | 50.00 ms         | {avg_b_tot:14.2f} ms | {avg_b_norm:14.2f} ms |         {err_b_norm:+6.2f} %   |
-+--------------------------+------------------+-------------------+-------------------+--------------------+
+[1] NODE PERIODICITY & JITTER ANALYSIS
++--------------------------+------------------+-------------------+--------------------+--------------------+--------------------+
+| Node Identifier          | Target Cycle(ms) | Normal Avg Cycle  | Min / Max Cycle    | Jitter (StdDev)    | Normal Error Rate  |
++--------------------------+------------------+-------------------+--------------------+--------------------+--------------------+
+| Gateway Loop (Uno C)     | 20.00 ms         | {avg_loop:14.2f} ms | {range_loop:>18s} ms | ±{std_loop:13.2f} ms | {err_loop:+15.2f} % |
+| Uno A Rx (Engine ECU)    | 20.00 ms         | {avg_a_norm:14.2f} ms | {range_a:>18s} ms | ±{std_a:13.2f} ms | {err_a_norm:+15.2f} % |
+| Uno B Rx (Seatbelt ECU)  | 50.00 ms         | {avg_b_norm:14.2f} ms | {range_b:>18s} ms | ±{std_b:13.2f} ms | {err_b_norm:+15.2f} % |
++--------------------------+------------------+-------------------+--------------------+--------------------+--------------------+
 
-[2] FAULT DIAGNOSTICS & RECOVERY (ISO 26262 / UDS Verification)
+[2] FAULT DIAGNOSTICS 
 +--------------------------+--------------------+---------------------------------------------------------------+
 | Diagnostic Item          | Fault Count        | Occurrence Timestamps / Details                               |
 +--------------------------+--------------------+---------------------------------------------------------------+
 | Engine DTC (Uno A)       | {metrics['dtc_events']['Uno_A']:18d} | {format_ts(metrics['dtc_timestamps']['Uno_A']):61s} |
-| Seatbelt DTC (Uno B)     | {metrics['dtc_events']['Uno_B']:18d} | {format_ts(metrics['dtc_timestamps']['Uno_B']):61s} |
-| Fault Recovery Time      | {avg_recovery:15.2f} ms | Debounce & Fail-Safe Recovery Time                            |
+| Seatbelt DTC (Uno B)     | {metrics['dtc_events']['Uno_B']:18d} | {format_ts(metrics['dtc_timestamps']['Uno_B']):61s} |                      |
 | Fail-Safe Enforcement    | {'PASS' if metrics['failsafe_passed'] else 'N/A':18s} | Enforced Speed: 60 km/h                                       |
 +--------------------------+--------------------+---------------------------------------------------------------+
 """
