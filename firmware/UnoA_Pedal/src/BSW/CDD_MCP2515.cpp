@@ -34,6 +34,12 @@ bool CDD_MCP2515_WriteMessage(const Can_PduType* pdu) {
     return (mcp2515.sendMessage(&frame) == MCP2515::ERROR_OK);
 }
 
+
+
+uint8_t CDD_MCP2515_GetErrorFlags(void) {
+    return mcp2515.checkError(); 
+}
+
 /*bool CDD_MCP2515_ReadMessage(Can_PduType* pdu) {
     if (pdu == NULL) return false;
 

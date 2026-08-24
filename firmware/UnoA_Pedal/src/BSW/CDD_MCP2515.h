@@ -5,6 +5,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // CAN 메시지 구조체 (BSW/CDD 표준 데이터 타입)
 typedef struct {
     uint32_t can_id;  // CAN ID (예: 0x150)
@@ -12,14 +16,15 @@ typedef struct {
     uint8_t  data[8]; // 실제 전달 데이터 버퍼
 } Can_PduType;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 
 // CDD MCP2515 API 
 void CDD_MCP2515_Init(void);
 bool CDD_MCP2515_WriteMessage(const Can_PduType* pdu);
 bool CDD_MCP2515_ReadMessage(Can_PduType* pdu);
+
+uint8_t CDD_MCP2515_GetBusOffStatus(void);
+uint8_t CDD_MCP2515_GetErrorFlags(void);
 
 #ifdef __cplusplus
 }
