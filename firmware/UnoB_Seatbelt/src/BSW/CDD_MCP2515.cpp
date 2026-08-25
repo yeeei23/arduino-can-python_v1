@@ -1,4 +1,6 @@
 #include "CDD_MCP2515.h"
+#include <SPI.h>
+#include <mcp2515.h>  // MCP2515 CAN 컨트롤러 라이브러리
 
 // CS 핀 번호는 외부 노출 없이 CDD 내부에서만 사용
 #define CAN_CS_PIN 10
@@ -65,5 +67,8 @@ bool CDD_MCP2515_WriteMessage(uint32_t id, const uint8_t* data, uint8_t dlc) {
     return (mcp2515.sendMessage(&frame) == MCP2515::ERROR_OK);
 }
 
+uint8_t CDD_MCP2515_GetErrorFlags(void) {
+    return mcp2515.checkError(); 
+}
 
 

@@ -38,6 +38,10 @@ static inline void Rte_Call_NOP_SetLed(uint8_t state) {
     IoHwAb_SetLed(state);
 }
 
+static inline void Rte_Call_RP_Diagnostic_SaveFreezeFrame(const FreezeFrame_t* frame) {
+    IoHwAb_SaveFreezeFrame(frame);
+}
+
 #ifdef __cplusplus
 }
 #endif

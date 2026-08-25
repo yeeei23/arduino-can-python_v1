@@ -2,8 +2,9 @@
 #define CDD_MCP2515_H
 
 #include <Arduino.h>
-#include <mcp2515.h>
-#include <SPI.h>
+#include <stdint.h>
+#include <stdbool.h>
+
 
 #include "IoHwAb.h"
 
@@ -20,5 +21,7 @@ void CDD_MCP2515_Init(void);
 bool CDD_MCP2515_ReadMessage(Can_PduType* pPdu);
 
 bool CDD_MCP2515_WriteMessage(uint32_t id, const uint8_t* data, uint8_t dlc);
+
+uint8_t CDD_MCP2515_GetErrorFlags(void);
 
 #endif
