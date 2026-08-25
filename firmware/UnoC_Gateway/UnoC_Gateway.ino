@@ -4,8 +4,27 @@
 #include "src/ASW/GatewayControl_SWC.h"
 
 GatewayControl_SWC_Type gatewaySwc;
+
+
 unsigned long lastTaskTime = 0;
+static uint32_t lastLogTime = 0;
+
+
 const unsigned long TASK_INTERVAL = 20; // 20ms 주기 (50Hz)
+const uint32_t LOG_INTERVAL  = 100; // 로그 주기 (100ms)
+
+// 숫자 2자리 패딩 출력 헬퍼 (01, 09, 15)
+static void PrintDigits2(uint8_t val) {
+    if (val < 10) Serial.print('0');
+    Serial.print(val);
+}
+
+// 속도 3자리 패딩 출력 헬퍼 (  0,  60, 120)
+static void PrintSpeed3(uint8_t speed) {
+    if (speed < 10) Serial.print(F("  "));
+    else if (speed < 100) Serial.print(F(" "));
+    Serial.print(speed);
+}
 
 void setup() {
     Serial.begin(115200);
@@ -13,74 +32,84 @@ void setup() {
     RTE_Gateway_Init(&gatewaySwc);
 
     
-    Serial.println(F("================================================"));
-    Serial.println(F("   UnoC_Gateway Serial Monitor Debugger Starting   "));
-    Serial.println(F("================================================"));
-    Serial.println(F("D4: Orange LED (Seatbelt / UnoB DTC)"));
-    Serial.println(F("D5: Red LED    (Engine   / UnoA DTC)"));
-    Serial.println(F("------------------------------------------------"));
+    Serial.println(F("\n=========================================================================================="));
+    Serial.println(F("                       [ Uno C Central Gateway Telemetry Monitor ]                        "));
+    Serial.println(F("=========================================================================================="));
+    Serial.println(F(" | Node A (Engine/Pedal) | Node B (Seatbelt/Restraint) | Central Gateway DTC Status      |"));
+    Serial.println(F(" | Speed   | Alive | Comm| Status    | Alive | Comm    | Engine(U0100) | Seatbelt(U0151) |"));
+    Serial.println(F("------------------------------------------------------------------------------------------"));
     
 }
 
 void loop() {
-    unsigned long currentTime = millis();
-
-    //  1. D2 외부 인터럽트 기반 CAN 메시지 수신 (MCP2515 -> RTE -> ASW)
+    // 1. D2 CAN 인터럽트 수신 (MCP2515 -> RTE -> ASW)
     RTE_Gateway_ProcessCanRx(&gatewaySwc);
 
-    // 2. 20ms 주기 스케줄링 (ASW 타임아웃 검증 & 디버그 출력)
+    // 2. PC UDS 진단 명령 파싱 (>REQ,... 수신 처리 및 로컬 CLI 'r','c')
+    RTE_Gateway_ProcessSerialRx(&gatewaySwc);
+
+    unsigned long currentTime = millis();
+
+    // 3. 20ms 주기 ASW 로직 (타임아웃 감시 & DTC EEPROM 자동 기록 & LED)
     if (currentTime - lastTaskTime >= TASK_INTERVAL) {
         lastTaskTime = currentTime;
-
-        // ASW 100ms Timeout & Fail-Safe 검증
         Runnable_GatewayLogic_20ms(&gatewaySwc);
-
-        // H/W 경고등 제어 (D4: 주황-UnoB / D5: 빨강-UnoA)
         RTE_Gateway_UpdateFeedback(&gatewaySwc);
+    }
+
+    // 4. 100ms 주기 대시보드 출력
+    if (currentTime - lastLogTime >= LOG_INTERVAL) {
+        lastLogTime = currentTime;
 
         
-        // 1. [Uno A 노드 데이터 출력]
-        Serial.print(F("[UnoA] Speed: "));
-        if (gatewaySwc.unoA_Speed < 10) Serial.print(F("  "));
-        else if (gatewaySwc.unoA_Speed < 100) Serial.print(F(" "));
-        Serial.print(gatewaySwc.unoA_Speed);
-        Serial.print(F(" km/h | Alive: "));
-        if (gatewaySwc.unoA_Alive < 10) Serial.print(F(" "));
-        Serial.print(gatewaySwc.unoA_Alive);
-
-    //  [Uno B 안전벨트 상태 & Alive & DTC 출력]
-        Serial.print(F("    || [UnoB] Belt: "));
-        if (gatewaySwc.unoB_NodeOut) {
-            Serial.print(F("[NODE_OUT]  "));
+        // [1] Node A (Engine / Pedal) 출력
+        Serial.print(F(" | "));
+        PrintSpeed3(gatewaySwc.unoA_Speed);
+        Serial.print(F(" km/h |  #"));
+        PrintDigits2(gatewaySwc.unoA_Alive);
+        Serial.print(F("  | "));
+        if (gatewaySwc.unoA_NodeOut) {
+            Serial.print(F("[FAIL]"));
         } else {
-            // unoB_Data: 0x01 (체결) / 0x00 (미체결)
+            Serial.print(F("[ OK ]"));
+        }
+
+  
+        // [2] Node B (Seatbelt) 출력
+        Serial.print(F(" | "));
+        if (gatewaySwc.unoB_NodeOut) {
+            Serial.print(F("[  LOST   ]"));
+        } else {
             if (gatewaySwc.unoB_BeltStatus == 0x01) {
-                Serial.print(F("BUCKLED(1)  "));
+                Serial.print(F("[ BUCKLED ]"));
             } else {
-                Serial.print(F("UNBUCKLED(0)"));
+                Serial.print(F("[UNBUCKLED]"));
             }
         }
-
-        // Uno B Alive Counter 출력 
-        Serial.print(F(" | Alive: "));
-        if (gatewaySwc.unoB_Alive < 10) Serial.print(F(" "));
-        Serial.print(gatewaySwc.unoB_Alive);
-
-        
-        // 2. [DTC 상태 출력 - ON(ACTIVE) / OFF(NORMAL)]
-        // Uno A Engine DTC
-        if (gatewaySwc.unoA_NodeOut) {
-            Serial.print(F("    || Engine DTC: [ON (FAIL)] "));
-        } else {
-            Serial.print(F("    || Engine DTC: [OFF (OK)]  "));
-        }
-
-        // Uno B Seatbelt DTC
+        Serial.print(F(" |  #"));
+        PrintDigits2(gatewaySwc.unoB_Alive);
+        Serial.print(F("  | "));
         if (gatewaySwc.unoB_NodeOut) {
-            Serial.println(F(" | Seatbelt DTC: [ON (FAIL)] "));
+            Serial.print(F("[FAIL] "));
         } else {
-            Serial.println(F(" | Seatbelt DTC: [OFF (OK)]  "));
+            Serial.print(F("[ OK ] "));
         }
-        
+
+
+        // [3] Gateway DTC 판정 상태 출력
+        Serial.print(F("  | "));
+        if (gatewaySwc.unoA_NodeOut) {
+            Serial.print(F("[ ACTIVE(FAIL) ]"));
+        } else {
+            Serial.print(F("[ NORMAL(OK)   ]"));
+        }
+
+        Serial.print(F(" | "));
+        if (gatewaySwc.unoB_NodeOut) {
+            Serial.println(F("[ ACTIVE(FAIL) ] |"));
+        } else {
+            Serial.println(F("[ NORMAL(OK)   ] |"));
+        }
     }
 }
+
