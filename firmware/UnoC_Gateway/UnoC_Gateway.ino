@@ -11,7 +11,7 @@ static uint32_t lastLogTime = 0;
 
 
 const unsigned long TASK_INTERVAL = 20; // 20ms 주기 (50Hz)
-const uint32_t LOG_INTERVAL  = 100; // 로그 주기 (100ms)
+const uint32_t LOG_INTERVAL  = 20; // 로그 주기 (20ms)
 
 // 숫자 2자리 패딩 출력 헬퍼 (01, 09, 15)
 static void PrintDigits2(uint8_t val) {

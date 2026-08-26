@@ -1,7 +1,10 @@
 #include "GatewayControl_SWC.h"
 #include "../RTE/RTE_Gateway.h"
 
-#define TIMEOUT_THRESHOLD_MS 100 // 100ms 타임아웃 판정
+
+// [수정] 50ms 주기의 Uno B 및 EEPROM 쓰기 지연을 고려하여 200ms로 설정 
+#define TIMEOUT_THRESHOLD_MS 200
+//#define TIMEOUT_THRESHOLD_MS 100 // 100ms 타임아웃 판정
 #define RECOVERY_STABLE_CNT  5  // 5회(약 100ms) 연속 수신 시 소생
 
 static bool s_prevUnoA_NodeOut = false;
@@ -22,6 +25,10 @@ void GatewayControl_SWC_Init(GatewayControl_SWC_Type* pSwc) {
     pSwc->unoB_LastRxTime = now;
     pSwc->unoB_NodeOut = false;
     pSwc->unoB_SuccessCount = 0;
+
+    // [수정] 초기화 시 static 플래그 명시적 리셋
+    s_prevUnoA_NodeOut = false;
+    s_prevUnoB_NodeOut = false;
 }
 
 void Runnable_GatewayLogic_20ms(GatewayControl_SWC_Type* pSwc) {
@@ -43,11 +50,16 @@ void Runnable_GatewayLogic_20ms(GatewayControl_SWC_Type* pSwc) {
             frame.reserved = 0x00;
 
             RTE_Gateway_Call_RP_Diagnostic_SaveFreezeFrame(&frame);
+            s_prevUnoA_NodeOut = true; // [수정] 단선 진입 완료 플래그 세트
         }
 
         pSwc->unoA_Speed = 60; // 페일세이프 기본값
+    }else {
+        // [수정] RTE에서 연속 수신 성공으로 NodeOut이 정상(false) 해제되었을 때만 플래그 리셋
+        if (!pSwc->unoA_NodeOut) {
+            s_prevUnoA_NodeOut = false;
+        }
     }
-    s_prevUnoA_NodeOut = pSwc->unoA_NodeOut;
 
     
     // 2. Uno B (Seatbelt) 타임아웃 감시
@@ -65,9 +77,14 @@ void Runnable_GatewayLogic_20ms(GatewayControl_SWC_Type* pSwc) {
             frame.reserved = 0x00;
 
             RTE_Gateway_Call_RP_Diagnostic_SaveFreezeFrame(&frame);
+            s_prevUnoB_NodeOut = true; // [수정] 단선 진입 완료 플래그 세트
+        }
+    }else {
+        // [수정] RTE에서 연속 수신 성공으로 NodeOut이 정상(false) 해제되었을 때만 플래그 리셋
+        if (!pSwc->unoB_NodeOut) {
+            s_prevUnoB_NodeOut = false;
         }
     }
-    s_prevUnoB_NodeOut = pSwc->unoB_NodeOut;
 }
 
 

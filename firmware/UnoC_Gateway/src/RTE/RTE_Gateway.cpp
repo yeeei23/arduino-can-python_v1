@@ -1,6 +1,6 @@
 #include "RTE_Gateway.h"
 
-#define RECOVERY_STABLE_CNT  3  // 5회(약 100ms) 연속 수신 시 소생
+#define RECOVERY_STABLE_CNT  3  // 3회 연속 수신 시 소생
 
 static char s_serialBuf[64];
 static uint8_t s_bufIdx = 0;
@@ -81,31 +81,20 @@ void RTE_Gateway_ProcessCanRx(GatewayControl_SWC_Type* pSwc) {
     }
 }
 
-// ASW의 DTC 상태를 BSW IoHwAb(경고등 LED)로 전달
-void RTE_Gateway_UpdateFeedback(const GatewayControl_SWC_Type* pSwc) {
-    if (pSwc == NULL) return;
-    IoHwAb_SetDtcLeds(pSwc->unoA_NodeOut, pSwc->unoB_NodeOut);
-}
 
 void RTE_Gateway_ProcessSerialRx(GatewayControl_SWC_Type* pSwc) {
+    static char s_serialBuf[64];
+    static uint8_t s_bufIdx = 0;
+
     while (Serial.available() > 0) {
         char c = (char)Serial.read();
 
-        // 1. 단축키 로컬 디버그 ('r', 'c')
-        if (c == 'r' || c == 'R') {
-            IoHwAb_PrintStoredDtc();
-            continue;
-        } else if (c == 'c' || c == 'C') {
-            IoHwAb_ClearDTC();
-            Serial.println(F("[EEPROM] Gateway DTCs Cleared."));
-            continue;
-        }
-
-        // 2. 파이썬 UDS 프레임 파싱 (>REQ,ID,DATA)
+        // [1] 개행 수신 시 완성된 한 줄 파싱
         if (c == '\n' || c == '\r') {
             if (s_bufIdx > 0) {
-                s_serialBuf[s_bufIdx] = '\0';
+                s_serialBuf[s_bufIdx] = '\0'; // 문자열 종단
 
+                // 1-1. UDS 요청 (>REQ,ID,DATA) 파싱
                 if (strncmp(s_serialBuf, ">REQ,", 5) == 0) {
                     char* pId = s_serialBuf + 5;
                     char* pData = strchr(pId, ',');
@@ -120,25 +109,25 @@ void RTE_Gateway_ProcessSerialRx(GatewayControl_SWC_Type* pSwc) {
                         // SID 0x22: ReadDataByIdentifier
                         if (sid == 0x22) {
                             uint16_t did = ((uint16_t)payload[2] << 8) | payload[3];
-                            if (did == 0x0100) { // Read Speed DID
+                            if (did == 0x0100) { // Speed DID
                                 Serial.print(F("<RESP,7EA,04620100"));
                                 if (pSwc->unoA_Speed < 0x10) Serial.print('0');
                                 Serial.print(pSwc->unoA_Speed, HEX);
-                                Serial.println(F("000000"));
-                            } else if (did == 0x0101) { // Read Belt DID
+                                Serial.println(F("000000>"));
+                            } else if (did == 0x0101) { // Belt DID
                                 Serial.print(F("<RESP,7EA,04620101"));
                                 if (pSwc->unoB_BeltStatus < 0x10) Serial.print('0');
                                 Serial.print(pSwc->unoB_BeltStatus, HEX);
-                                Serial.println(F("000000"));
+                                Serial.println(F("000000>"));
                             }
                         }
-                        // SID 0x19: ReadDTCInformation (ReportDTCByStatusMask 0x02)
+                        // SID 0x19: ReadDTCInformation
                         else if (sid == 0x19 && payload[2] == 0x02) {
                             uint8_t count = IoHwAb_GetStoredCount();
                             FreezeFrame_t frame;
                             if (count > 0 && IoHwAb_ReadFreezeFrameBySlot(count - 1, &frame)) {
                                 Serial.print(F("<RESP,7EA,065902"));
-                                if ((frame.dtcCode >> 8) < 0x10) Serial.print('0');
+                                if (((frame.dtcCode >> 8) & 0xFF) < 0x10) Serial.print('0');
                                 Serial.print((frame.dtcCode >> 8) & 0xFF, HEX);
                                 if ((frame.dtcCode & 0xFF) < 0x10) Serial.print('0');
                                 Serial.print(frame.dtcCode & 0xFF, HEX);
@@ -146,24 +135,55 @@ void RTE_Gateway_ProcessSerialRx(GatewayControl_SWC_Type* pSwc) {
                                 Serial.print(frame.lastSpeed, HEX);
                                 if (frame.seatbeltState < 0x10) Serial.print('0');
                                 Serial.print(frame.seatbeltState, HEX);
-                                Serial.println(F("00"));
+                                Serial.println(F("00>"));
                             } else {
-                                Serial.println(F("<RESP,7EA,0359020000000000")); // No DTC
+                                Serial.println(F("<RESP,7EA,0359020000000000>"));
                             }
                         }
                         // SID 0x14: ClearDiagnosticInformation
                         else if (sid == 0x14) {
                             IoHwAb_ClearDTC();
-                            Serial.println(F("<RESP,7EA,0154000000000000")); // Clear OK
-                        }
+                            Serial.println(F("<RESP,7EA,0154000000000000>"));
+
+                            // [핵심] EEPROM 삭제 지연 시간 보정 (허위 타임아웃 방지)
+                            uint32_t now = millis();
+                            pSwc->unoA_LastRxTime = now;
+                            pSwc->unoB_LastRxTime = now;
+
+                            Serial.println(F("<RESP,7EA,0154000000000000>"));
+                                                }
                     }
                 }
-                s_bufIdx = 0;
+                // 1-2. 단축키 ('r', 'c') - 정확히 1글자 단독 입력일 때만 실행!
+                else if (s_bufIdx == 1) {
+                    if (s_serialBuf[0] == 'r' || s_serialBuf[0] == 'R') {
+                        IoHwAb_PrintStoredDtc();
+                    } else if (s_serialBuf[0] == 'c' || s_serialBuf[0] == 'C') {
+                        IoHwAb_ClearDTC();
+
+                        // [핵심] EEPROM 삭제 지연 시간 보정
+                        uint32_t now = millis();
+                        pSwc->unoA_LastRxTime = now;
+                        pSwc->unoB_LastRxTime = now;
+                        Serial.println(F("[EEPROM] Gateway DTCs Cleared."));
+                    }
+                }
+
+                s_bufIdx = 0; // 버퍼 리셋
             }
-        } else {
+        } 
+        // [2] 문자 버퍼링
+        else {
             if (s_bufIdx < sizeof(s_serialBuf) - 1) {
                 s_serialBuf[s_bufIdx++] = c;
             }
         }
     }
 }
+
+// ASW의 DTC 상태를 BSW IoHwAb(경고등 LED)로 전달
+void RTE_Gateway_UpdateFeedback(const GatewayControl_SWC_Type* pSwc) {
+    if (pSwc == NULL) return;
+    IoHwAb_SetDtcLeds(pSwc->unoA_NodeOut, pSwc->unoB_NodeOut);
+}
+
