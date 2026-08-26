@@ -1,0 +1,505 @@
+[23:43:28.556] ==========================================================================================
+[23:43:28.561] | Node A (Engine/Pedal) | Node B (Seatbelt/Restraint) | Central Gateway DTC Status      |
+[23:43:28.563] | Speed   | Alive | Comm| Status    | Alive | Comm    | Engine(U0100) | Seatbelt(U0151) |
+[23:43:28.566] ------------------------------------------------------------------------------------------
+[23:43:28.575] |  57 km/h |  #15  | [ OK ] | [UNBUCKLED] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.594] |  58 km/h |  #00  | [ OK ] | [UNBUCKLED] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.607] |  57 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.631] |  57 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.649] |  57 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.671] |  57 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.691] |  57 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.711] |  57 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.731] |  57 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.748] |  57 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.772] |  57 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.791] |  57 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.808] |  57 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.831] |  57 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.848] |  57 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.858] |  57 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.891] |  57 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.911] |  57 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.931] |  57 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.948] |  57 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.966] |  57 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:28.990] |  57 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.011] |  57 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.025] |  57 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.048] |  57 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.070] |  57 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.091] |  57 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.109] |  57 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.131] |  57 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.148] |  57 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.158] |  57 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.191] |  57 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.209] |  57 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.231] |  57 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.248] |  57 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.270] |  58 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.291] |  57 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.309] |  57 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.325] |  57 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.348] |  57 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.372] |  57 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.391] |  57 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.409] |  57 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.431] |  57 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.448] |  57 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.459] |  57 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.491] |  57 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.508] |  58 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.531] |  57 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.548] |  57 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.571] |  57 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.591] |  57 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.611] |  57 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.629] |  57 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.648] |  57 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.658] |  57 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.691] |  57 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.711] |  57 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.730] |  57 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.748] |  57 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.758] |  57 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.790] |  57 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.810] |  57 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.831] |  57 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.848] |  58 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.864] |  57 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.891] |  57 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.910] |  58 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.925] |  57 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.947] |  58 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.964] |  57 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:29.991] |  58 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.010] |  57 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.031] |  57 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.048] |  57 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.058] |  57 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.091] |  57 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.108] |  57 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.131] |  57 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.148] |  58 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.158] |  57 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.189] |  58 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.208] |  57 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.231] |  58 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.248] |  57 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.269] |  58 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.291] |  57 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.308] |  58 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.331] |  58 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.348] |  58 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.358] |  57 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.391] |  58 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.409] |  58 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.425] |  57 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.451] |  58 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.470] |  58 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.491] |  58 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.509] |  58 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.531] |  58 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.548] |  58 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.558] |  58 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.591] |  58 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.610] |  58 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.631] |  58 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.651] |  61 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.667] |  61 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.693] |  62 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.712] |  63 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.729] |  65 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.748] |  66 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.771] |  66 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.786] |  66 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.808] |  66 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.830] |  66 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.842] |  66 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.857] |  66 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.891] |  66 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.909] |  66 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.931] |  66 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.948] |  66 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.958] |  66 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:30.992] |  66 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.009] |  66 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.031] |  67 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.048] |  66 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.073] |  66 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.091] |  68 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.109] |  67 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.132] |  67 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.148] |  67 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.158] |  67 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.191] |  67 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.208] |  67 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.231] |  67 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.250] |  67 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.272] |  66 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.291] |  67 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.309] |  66 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.332] |  67 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.348] |  67 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.372] |  67 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.391] |  66 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.410] |  67 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.431] |  67 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.448] |  66 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.466] |  67 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.491] |  67 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.512] |  67 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.531] |  67 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.548] |  67 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.572] |  67 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.591] |  67 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.612] |  67 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.631] |  66 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.648] |  67 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.667] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.691] |  67 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.714] |  67 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.731] |  67 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.741] |  67 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.769] |  66 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.791] |  67 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.808] |  66 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.825] |  67 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.848] |  67 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.865] |  66 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.891] |  67 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.908] |  65 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.931] |  67 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.948] |  66 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.958] |  67 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:31.991] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.009] |  67 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.031] |  66 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.048] |  66 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.058] |  67 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.091] |  66 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.110] |  67 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.131] |  67 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.148] |  67 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.167] |  66 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.190] |  67 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.210] |  67 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.228] |  67 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.248] |  67 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.258] |  67 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.292] |  66 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.309] |  67 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.331] |  67 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.347] |  66 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.365] |  67 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.392] |  67 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.410] |  67 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.431] |  67 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.448] |  67 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.465] |  67 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.491] |  67 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.510] |  67 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.531] |  67 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.548] |  67 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.563] |  67 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.591] |  67 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #15  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.612] |  66 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.630] |  67 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.650] |  66 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.670] |  66 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.691] |  66 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #00  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.712] |  66 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.728] |  66 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.749] |  66 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.758] |  66 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.791] |  67 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #01  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.808] |  67 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.829] |  66 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.850] |  66 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.869] |  66 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.891] |  66 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #02  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.911] |  66 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.931] |  66 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.948] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.970] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:32.991] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:33.009] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:33.031] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:33.050] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:33.058] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:33.091] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:33.112] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:33.131] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:33.158] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #05  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.174] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #05  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.191] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #05  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.212] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #06  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.231] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #06  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.248] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #06  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.270] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #06  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.292] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #06  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.310] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #07  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.331] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #07  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.348] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #07  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.372] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #07  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.390] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #07  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.412] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #08  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.431] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #08  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.448] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #08  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.458] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #08  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.491] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #08  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.508] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #09  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.529] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #09  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.551] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #09  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.572] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #09  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.591] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #09  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.609] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #10  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.630] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #10  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.651] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #10  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.670] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #10  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.691] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #10  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.710] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #11  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.729] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #11  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.750] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #11  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.759] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #11  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.791] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #11  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.808] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #12  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.831] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #12  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.847] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #12  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.857] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #12  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.891] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #12  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.908] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #13  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.931] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #13  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.948] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #13  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.958] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #13  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:33.991] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #13  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.010] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #14  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.031] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #14  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.048] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #14  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.058] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #14  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.091] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #14  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.108] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #15  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.131] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #15  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.148] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #15  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.164] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #15  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.191] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #15  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.209] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #00  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.231] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #00  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.248] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #00  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.264] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #00  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.291] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #00  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.308] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #01  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.326] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #01  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.347] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #01  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.358] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #01  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.391] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #01  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.408] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #02  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.431] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #02  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.449] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #02  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.471] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #02  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.491] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #02  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.508] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #03  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.531] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #03  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.547] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #03  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.558] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #03  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.592] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #03  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.608] |  60 km/h |  #10  | [FAIL] | [ BUCKLED ] |  #04  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.629] |  60 km/h |  #01  | [FAIL] | [ BUCKLED ] |  #04  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.646] |  60 km/h |  #02  | [FAIL] | [ BUCKLED ] |  #04  | [ OK ]   | [ ACTIVE(FAIL) ] | [ NORMAL(OK)   ] |
+[23:43:34.664] |  67 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.691] |  67 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.711] |  66 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.731] |  66 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.750] |  66 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.758] |  66 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.790] |  67 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.810] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.831] |  66 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.848] |  67 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.871] |  66 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.891] |  66 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.912] |  66 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.930] |  67 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.948] |  66 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.970] |  66 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:34.991] |  66 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.008] |  67 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.031] |  66 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.050] |  66 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.069] |  67 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.089] |  66 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.108] |  66 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.131] |  67 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.148] |  67 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.172] |  67 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.191] |  67 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.212] |  67 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.231] |  67 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.248] |  67 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.259] |  67 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.292] |  67 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.308] |  67 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.331] |  67 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.348] |  67 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.357] |  67 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.390] |  66 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.409] |  67 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.425] |  66 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.448] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.471] |  67 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.494] |  67 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.510] |  67 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.528] |  67 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.552] |  66 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.570] |  67 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.592] |  67 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #13  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.609] |  67 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.626] |  66 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.648] |  66 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.667] |  66 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.691] |  66 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.710] |  66 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.726] |  66 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.748] |  66 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.773] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.791] |  66 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #14  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:35.824] |  66 km/h |  #12  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:35.824] |  66 km/h |  #13  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:35.852] |  67 km/h |  #14  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:35.870] |  67 km/h |  #15  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:35.891] |  66 km/h |  #00  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:35.909] |  66 km/h |  #01  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:35.931] |  66 km/h |  #02  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:35.948] |  67 km/h |  #03  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:35.958] |  66 km/h |  #04  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:35.991] |  67 km/h |  #05  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.011] |  66 km/h |  #06  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.031] |  66 km/h |  #07  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.049] |  66 km/h |  #08  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.058] |  67 km/h |  #09  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.091] |  67 km/h |  #10  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.112] |  66 km/h |  #11  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.131] |  67 km/h |  #12  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.148] |  67 km/h |  #13  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.158] |  67 km/h |  #14  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.191] |  66 km/h |  #15  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.209] |  67 km/h |  #00  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.231] |  67 km/h |  #01  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.247] |  67 km/h |  #02  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.272] |  67 km/h |  #03  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.291] |  66 km/h |  #04  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.310] |  67 km/h |  #05  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.331] |  66 km/h |  #06  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.348] |  67 km/h |  #07  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.358] |  66 km/h |  #08  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.391] |  66 km/h |  #09  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.410] |  67 km/h |  #10  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.431] |  66 km/h |  #11  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.459] |  67 km/h |  #12  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.471] |  66 km/h |  #13  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.491] |  67 km/h |  #14  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.511] |  67 km/h |  #15  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.531] |  67 km/h |  #00  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.548] |  67 km/h |  #01  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.558] |  67 km/h |  #02  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.590] |  67 km/h |  #03  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.610] |  67 km/h |  #04  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.625] |  67 km/h |  #05  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.649] |  66 km/h |  #06  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.671] |  67 km/h |  #07  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.691] |  67 km/h |  #08  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.710] |  66 km/h |  #09  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.731] |  67 km/h |  #10  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.750] |  66 km/h |  #11  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.771] |  67 km/h |  #12  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.792] |  66 km/h |  #13  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.811] |  67 km/h |  #14  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.831] |  66 km/h |  #15  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.848] |  67 km/h |  #00  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.865] |  66 km/h |  #01  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.892] |  67 km/h |  #02  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.912] |  67 km/h |  #03  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.931] |  66 km/h |  #04  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.948] |  67 km/h |  #05  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.966] |  66 km/h |  #06  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:36.991] |  67 km/h |  #07  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.009] |  66 km/h |  #08  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.030] |  66 km/h |  #09  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.047] |  66 km/h |  #10  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.072] |  67 km/h |  #11  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.091] |  66 km/h |  #12  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.112] |  66 km/h |  #13  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.131] |  67 km/h |  #14  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.148] |  66 km/h |  #15  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.171] |  67 km/h |  #00  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.191] |  66 km/h |  #01  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.208] |  67 km/h |  #02  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.231] |  66 km/h |  #03  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.248] |  66 km/h |  #04  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.259] |  67 km/h |  #05  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.290] |  66 km/h |  #06  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.309] |  67 km/h |  #07  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.331] |  67 km/h |  #08  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.347] |  67 km/h |  #09  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.366] |  67 km/h |  #10  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.392] |  67 km/h |  #11  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.412] |  67 km/h |  #12  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.430] |  66 km/h |  #13  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.443] |  67 km/h |  #14  | [ OK ] | [  LOST   ] |  #14  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.468] |  65 km/h |  #15  | [ OK ] | [  LOST   ] |  #01  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.491] |  67 km/h |  #00  | [ OK ] | [  LOST   ] |  #01  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.508] |  67 km/h |  #01  | [ OK ] | [  LOST   ] |  #01  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.531] |  67 km/h |  #02  | [ OK ] | [  LOST   ] |  #01  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.548] |  67 km/h |  #03  | [ OK ] | [  LOST   ] |  #02  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.563] |  66 km/h |  #04  | [ OK ] | [  LOST   ] |  #02  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.591] |  67 km/h |  #05  | [ OK ] | [  LOST   ] |  #02  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.608] |  66 km/h |  #06  | [ OK ] | [  LOST   ] |  #02  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.631] |  66 km/h |  #07  | [ OK ] | [  LOST   ] |  #02  | [FAIL]   | [ NORMAL(OK)   ] | [ ACTIVE(FAIL) ] |
+[23:43:37.648] |  66 km/h |  #08  | [ OK ] | [UNBUCKLED] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.657] |  66 km/h |  #09  | [ OK ] | [UNBUCKLED] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.690] |  66 km/h |  #10  | [ OK ] | [UNBUCKLED] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.708] |  66 km/h |  #11  | [ OK ] | [UNBUCKLED] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.731] |  66 km/h |  #12  | [ OK ] | [UNBUCKLED] |  #03  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.747] |  66 km/h |  #13  | [ OK ] | [UNBUCKLED] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.758] |  67 km/h |  #14  | [ OK ] | [UNBUCKLED] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.791] |  66 km/h |  #15  | [ OK ] | [UNBUCKLED] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.812] |  66 km/h |  #00  | [ OK ] | [UNBUCKLED] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.831] |  66 km/h |  #01  | [ OK ] | [UNBUCKLED] |  #04  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.847] |  67 km/h |  #02  | [ OK ] | [UNBUCKLED] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.858] |  66 km/h |  #03  | [ OK ] | [UNBUCKLED] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.891] |  66 km/h |  #04  | [ OK ] | [UNBUCKLED] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.909] |  66 km/h |  #05  | [ OK ] | [UNBUCKLED] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.931] |  66 km/h |  #06  | [ OK ] | [UNBUCKLED] |  #05  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.948] |  66 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.964] |  66 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:37.991] |  66 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.008] |  66 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.031] |  66 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #06  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.048] |  66 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.064] |  66 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.091] |  66 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.108] |  66 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.131] |  67 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #07  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.147] |  67 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.157] |  66 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.191] |  67 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.208] |  67 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.231] |  67 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #08  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.247] |  66 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.257] |  66 km/h |  #07  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.291] |  67 km/h |  #08  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.309] |  67 km/h |  #09  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.331] |  67 km/h |  #10  | [ OK ] | [ BUCKLED ] |  #09  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.347] |  67 km/h |  #11  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.372] |  66 km/h |  #12  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.391] |  67 km/h |  #13  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.412] |  66 km/h |  #14  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.431] |  67 km/h |  #15  | [ OK ] | [ BUCKLED ] |  #10  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.447] |  67 km/h |  #00  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.457] |  67 km/h |  #01  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.491] |  66 km/h |  #02  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.508] |  67 km/h |  #03  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.531] |  67 km/h |  #04  | [ OK ] | [ BUCKLED ] |  #11  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.549] |  67 km/h |  #05  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |
+[23:43:38.571] |  67 km/h |  #06  | [ OK ] | [ BUCKLED ] |  #12  | [ OK ]   | [ NORMAL(OK)   ] | [ NORMAL(OK)   ] |

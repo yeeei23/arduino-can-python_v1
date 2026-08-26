@@ -201,7 +201,7 @@ def generate_summary():
 +--------------------------+------------------+-------------------+--------------------+--------------------+
 | Gateway Loop (Uno C)     | 20.00 ms         | {avg_loop:14.2f} ms | {range_loop:>18s} ms | ±{std_loop:15.2f} ms |
 | Uno A Rx (Engine ECU)    | 20.00 ms         | {avg_a:14.2f} ms | {range_a:>18s} ms | ±{std_a:15.2f} ms |
-| Uno B Rx (Seatbelt ECU)  | 50.00 ms         | {avg_b:14.2f} ms | {range_b:>18s} ms | ±{std_b:15.2f} ms |
+| Uno B Rx (Seatbelt ECU)  | 100.00 ms         | {avg_b:14.2f} ms | {range_b:>18s} ms | ±{std_b:15.2f} ms |
 +--------------------------+------------------+-------------------+--------------------+--------------------+
 
 [2] FAULT DIAGNOSTICS & FAIL-SAFE EVALUATION

@@ -2,10 +2,14 @@
 #include "../RTE/RTE_Gateway.h"
 
 
-// [수정] 50ms 주기의 Uno B 및 EEPROM 쓰기 지연을 고려하여 200ms로 설정 
-#define TIMEOUT_THRESHOLD_MS 200
+
+#define UNO_A_TIMEOUT_MS   100   // 20ms 기준 5프레임 누락 시 타임아웃
+#define UNO_B_TIMEOUT_MS   350   // 100ms 기준 3~4프레임 누락 시 타임아웃
+
+// 50ms 주기의 Uno B 및 EEPROM 쓰기 지연을 고려하여 200ms로 설정 
+//#define TIMEOUT_THRESHOLD_MS 200
 //#define TIMEOUT_THRESHOLD_MS 100 // 100ms 타임아웃 판정
-#define RECOVERY_STABLE_CNT  5  // 5회(약 100ms) 연속 수신 시 소생
+#define RECOVERY_STABLE_CNT  5  // 5회 (약 100ms) 연속 수신 시 소생
 
 static bool s_prevUnoA_NodeOut = false;
 static bool s_prevUnoB_NodeOut = false;
@@ -36,7 +40,7 @@ void Runnable_GatewayLogic_20ms(GatewayControl_SWC_Type* pSwc) {
 
  
     // 1. Uno A (Engine / Speed) 타임아웃 감시
-    if (currentMs - pSwc->unoA_LastRxTime > TIMEOUT_THRESHOLD_MS) {
+    if (currentMs - pSwc->unoA_LastRxTime > UNO_A_TIMEOUT_MS) {
         pSwc->unoA_NodeOut = true;
 
         // [수정] 단선 발생 순간 1회만 직전 속도 스냅샷 EEPROM 기록
@@ -63,7 +67,7 @@ void Runnable_GatewayLogic_20ms(GatewayControl_SWC_Type* pSwc) {
 
     
     // 2. Uno B (Seatbelt) 타임아웃 감시
-    if (currentMs - pSwc->unoB_LastRxTime > TIMEOUT_THRESHOLD_MS) {
+    if (currentMs - pSwc->unoB_LastRxTime > UNO_B_TIMEOUT_MS) {
         pSwc->unoB_NodeOut = true;
 
         // [수정] 단선 발생 순간 1회만 직전 상태 스냅샷 EEPROM 기록

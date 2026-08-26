@@ -9,8 +9,8 @@ static Seatbelt_SWC_Type g_seatbeltSwc;
 static uint32_t g_lastTxTick = 0;
 static uint32_t g_lastDebugTick = 0;
 
-// Uno B (안전벨트 ECU): 50ms 고정 주기 적용
-const uint32_t TX_INTERVAL_MS = 50;
+// Uno B (안전벨트 ECU): 100ms 고정 주기 적용
+const uint32_t TX_INTERVAL_MS = 100;
 
 // EEPROM DTC 전체 출력 헬퍼 함수
 static void PrintDtcHistory(void) {
