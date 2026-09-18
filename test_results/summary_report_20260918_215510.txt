@@ -1,0 +1,35 @@
++-------------------------------------------------------------------------------------------------------+
+|                                  AUTOMOTIVE CAN GATEWAY TEST REPORT                                   |
++-------------------------------------------------------------------------------------------------------+
+  Session ID           : 20260918_215510
+  Total Execution Time : 56.71 sec (0m 56s)
+  Total Frames Rx      : 5633 Frames
++-------------------------------------------------------------------------------------------------------+
+
+[1] NODE PERIODICITY & TIMING ANALYSIS
++--------------------------+------------------+-------------------+--------------------+--------------------+
+| Node Identifier          | Target Cycle(ms) | Measured Avg Cycle| Min / Max Cycle    | Jitter (StdDev)    |
++--------------------------+------------------+-------------------+--------------------+--------------------+
+| Gateway Loop (Uno C)     | 10.00 ms         |          10.04 ms |         3.5 / 12.8 ms | ±           0.66 ms |
+| Uno A Rx (Engine ECU)    | 20.00 ms         |          19.97 ms |         1.0 / 22.0 ms | ±           0.71 ms |
+| Uno B Rx (Seatbelt ECU)  | 100.00 ms         |          99.75 ms |       26.0 / 102.0 ms | ±           3.97 ms |
++--------------------------+------------------+-------------------+--------------------+--------------------+
+
+[2] FAULT DIAGNOSTICS & FAIL-SAFE EVALUATION
++--------------------------+--------------------+---------------------------------------------------------------+
+| Diagnostic Item          | Fault Count        | Status & Occurrence Timestamps                                |
++--------------------------+--------------------+---------------------------------------------------------------+
+| Engine DTC (Uno A)       |                  1 | 21:55:31.620
+| Uno A Fail-Safe Speed    |               PASS | Enforced Default Speed: 60 km/h (Verified)                    |
+| Seatbelt DTC (Uno B)     |                  1 | 21:55:34.844
+| Uno B Fail-Safe State    |               PASS | Enforced State: UNBUCKLED / Safe Default (Verified)           |
++--------------------------+--------------------+---------------------------------------------------------------+
+
+[3] UDS (ISO 14229) DIAGNOSTIC SERVICES
++---------------------------------------------+---------------+-----------------------------------------+
+| UDS Service Name                            | Verified Count| Protocol Status                         |
++---------------------------------------------+---------------+-----------------------------------------+
+| SID 0x22 (ReadDataByIdentifier)             |             2 | Positive Response (0x62) Received       |
+| SID 0x19 (ReadDTCInformation / FreezeFrame) |             1 | Positive Response (0x59) Received       |
+| SID 0x14 (ClearDiagnosticInformation)       |             1 | Positive Response (0x54) Received       |
++---------------------------------------------+---------------+-----------------------------------------+

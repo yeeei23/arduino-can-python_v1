@@ -9,7 +9,7 @@ import statistics
 # ==============================================================================
 # 📌 1. 환경 설정 및 경로
 # ==============================================================================
-UNO_C_PORT = "COM10"  # 게이트웨이(Uno C) 실제 포트
+UNO_C_PORT = "COM3"  # 게이트웨이(Uno C) 실제 포트
 BAUD_RATE = 115200
 
 LOG_DIR = "../test_results"
@@ -20,6 +20,9 @@ session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
 raw_log_file = os.path.join(LOG_DIR, f"raw_log_{session_id}.log")
 summary_report_file = os.path.join(LOG_DIR, f"summary_report_{session_id}.txt")
 
+# 👇 [추가] 파싱된 예쁜 로그를 저장할 파일과 색상 제거기
+parsed_log_file = os.path.join(LOG_DIR, f"parsed_log_{session_id}.txt")
+ANSI_ESCAPE = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
 # ==============================================================================
 # 📌 2. 정규식 패턴 (테이블 텔레메트리 & UDS 응답)
 # ==============================================================================
@@ -60,6 +63,14 @@ is_running = True
 # ==============================================================================
 # 📌 4. 파싱 함수
 # ==============================================================================
+# 👇 [추가] 화면에도 띄우고 텍스트 파일에도 깔끔하게 저장하는 헬퍼 함수
+def log_and_print(msg):
+    print(msg)  # 화면엔 색상 그대로 출력
+    clean_msg = ANSI_ESCAPE.sub('', msg)  # 텍스트 파일용으론 색상 코드만 쏙 제거
+    with open(parsed_log_file, "a", encoding="utf-8") as f:
+        f.write(clean_msg + "\n")
+
+
 def parse_uds_line(payload_hex):
     try:
         sid_resp = int(payload_hex[2:4], 16)
@@ -83,84 +94,78 @@ def parse_uds_line(payload_hex):
         pass
     return None
 
+
 def parse_uno_c_line(line, now_sec, timestamp_str):
-    # 1. 보드 리셋 및 EEPROM 덤프 감지
-    if any(k in line for k in ["[SYSTEM_RESET]", "Booted", "EEPROM DTC History"]):
+    # 1. 보드 리셋 및 EEPROM 감지
+    if any(k in line for k in ["[SYSTEM_RESET]", "Booted", "EEPROM DTC History", "Gateway DTCs Cleared"]):
         metrics["boot_reset_count"] += 1
-        return f"[SYSTEM REBOOT / EEPROM DETECTED] {line}"
+        return f"🚨 \033[93m[SYSTEM REBOOT / EEPROM DETECTED] {line}\033[0m"
 
     # 2. UDS 진단 통신 응답 감지
     uds_match = UDS_RESP_PATTERN.search(line)
     if uds_match:
         return parse_uds_line(uds_match.group("payload"))
 
-    # 3. 실시간 텔레메트리 파싱
-    match = LOG_PATTERN.search(line)
-    if not match:
-        return None
+    # 3. 실시간 텔레메트리 파싱 (CSV 분리)
+    if line.startswith("$DATA,"):
+        metrics["total_frames"] += 1
+        try:
+            parts = line.split(",")
+            # 규격: $DATA, Time, Speed, Delta_A, Belt, Delta_B, NodeA_Err, NodeB_Err
+            gw_time = int(parts[1])
+            speed = int(parts[2])
+            delta_a = int(parts[3])
+            belt_val = int(parts[4])
+            delta_b = int(parts[5])
+            
+            eng_fail = (parts[6] == "1")
+            sb_fail = (parts[7] == "1")
+            
+            belt_str = "BUCKLED" if belt_val == 1 else "UNBUCKLED"
+            is_normal_state = (not eng_fail) and (not sb_fail)
 
-    metrics["total_frames"] += 1
-    d = match.groupdict()
+            # --- 3-1. 게이트웨이 루프 주기 (파이썬 UART 수신 기준 Jitter) ---
+            if metrics["last_rx_time_loop"] is not None:
+                dt_loop = (now_sec - metrics["last_rx_time_loop"]) * 1000.0
+                if is_normal_state and dt_loop < 100.0:
+                    metrics["intervals_loop_normal"].append(dt_loop)
+            metrics["last_rx_time_loop"] = now_sec
 
-    speed = int(d["speed"])
-    curr_alive_a = int(d["alive_a"])
-    curr_alive_b = int(d["alive_b"])
-    belt_str = d["belt"].strip().upper()
+            # --- 3-2. 통계 및 지터 수집 (아두이노 측정 순수 CAN Delta 반영) ---
+            if is_normal_state:
+                if 0 < delta_a < 100:  # 노이즈/단선 스파이크 필터링 (Target 20ms)
+                    metrics["intervals_a_normal"].append(delta_a)
+                if 0 < delta_b < 200:  # Target 100ms
+                    metrics["intervals_b_normal"].append(delta_b)
 
-    eng_fail = ("FAIL" in d["comm_a"]) or ("FAIL" in d["dtc_a"])
-    sb_fail = ("FAIL" in d["comm_b"]) or ("FAIL" in d["dtc_b"])
-    is_normal_state = (not eng_fail) and (not sb_fail)
+            # --- 3-3. 결함 감지 및 Fail-Safe 검증 ---
+            if eng_fail:
+                if not metrics["prev_eng_fail"]:
+                    metrics["dtc_events"]["Uno_A"] += 1
+                    metrics["dtc_timestamps"]["Uno_A"].append(timestamp_str)
+                if speed == 60:
+                    metrics["failsafe_a_passed"] = True
 
-    # 3-1. 게이트웨이 루프 주기 (단선 스파이크 <100ms 제외)
-    # 3-1. 게이트웨이 루프 주기 (단선 스파이크 <100ms 만 제외)
-    if metrics["last_rx_time_loop"] is not None:
-        dt_loop = (now_sec - metrics["last_rx_time_loop"]) * 1000.0
-        if is_normal_state and dt_loop < 100.0:
-            metrics["intervals_loop_normal"].append(dt_loop)
-    metrics["last_rx_time_loop"] = now_sec
+            if sb_fail:
+                if not metrics["prev_sb_fail"]:
+                    metrics["dtc_events"]["Uno_B"] += 1
+                    metrics["dtc_timestamps"]["Uno_B"].append(timestamp_str)
+                if belt_val == 0: # 0이 UNBUCKLED
+                    metrics["failsafe_b_passed"] = True
 
-    # 3-2. Uno A 수신 주기 (Target: 20ms, Alive 엣지 감지 & <100ms 수집)
-    if metrics["last_alive_a"] is not None and curr_alive_a != metrics["last_alive_a"]:
-        if metrics["last_rx_time_a"] is not None:
-            dt_a = (now_sec - metrics["last_rx_time_a"]) * 1000.0
-            diff_a = (curr_alive_a - metrics["last_alive_a"]) & 0x0F
-            if diff_a > 0:
-                cycle_a = dt_a / diff_a
-                if is_normal_state and cycle_a < 100.0:
-                    metrics["intervals_a_normal"].append(cycle_a)
-        metrics["last_rx_time_a"] = now_sec
-    metrics["last_alive_a"] = curr_alive_a
+            metrics["prev_eng_fail"] = eng_fail
+            metrics["prev_sb_fail"] = sb_fail
 
-    # 3-3. Uno B 수신 주기 (Target: 50ms, Alive 엣지 감지 & <200ms 수집)
-    if metrics["last_alive_b"] is not None and curr_alive_b != metrics["last_alive_b"]:
-        if metrics["last_rx_time_b"] is not None:
-            dt_b = (now_sec - metrics["last_rx_time_b"]) * 1000.0
-            diff_b = (curr_alive_b - metrics["last_alive_b"]) & 0x0F
-            if diff_b > 0:
-                cycle_b = dt_b / diff_b
-                if is_normal_state and cycle_b < 200.0:
-                    metrics["intervals_b_normal"].append(cycle_b)
-        metrics["last_rx_time_b"] = now_sec
-    metrics["last_alive_b"] = curr_alive_b
+            # --- 3-4. 콘솔 출력용 UI 렌더링 ---
+            if eng_fail or sb_fail:
+                return f"🚨 \033[91m[FAULT ] Speed: {speed:3d} km/h (dt:{delta_a:3d}ms) | Belt: {belt_str:9s} (dt:{delta_b:3d}ms) | Err: A={int(eng_fail)}, B={int(sb_fail)}\033[0m"
+            else:
+                return f"   \033[92m[NORMAL] Speed: {speed:3d} km/h (dt:{delta_a:3d}ms) | Belt: {belt_str:9s} (dt:{delta_b:3d}ms) | Err: A=0, B=0\033[0m"
+                
+        except Exception as e:
+            pass # 파싱 실패 시 무시
 
-    # 4. 결함 감지 및 Fail-Safe 검증
-    if eng_fail:
-        if not metrics["prev_eng_fail"]:
-            metrics["dtc_events"]["Uno_A"] += 1
-            metrics["dtc_timestamps"]["Uno_A"].append(timestamp_str)
-        if speed == 60:
-            metrics["failsafe_a_passed"] = True
-
-    if sb_fail:
-        if not metrics["prev_sb_fail"]:
-            metrics["dtc_events"]["Uno_B"] += 1
-            metrics["dtc_timestamps"]["Uno_B"].append(timestamp_str)
-        if "UNBUCKLED" in belt_str or "LOST" in belt_str:
-            metrics["failsafe_b_passed"] = True
-
-    metrics["prev_eng_fail"] = eng_fail
-    metrics["prev_sb_fail"] = sb_fail
-    return None
+    return line # 정형화되지 않은 일반 프린트문은 그대로 반환
 
 # ==============================================================================
 # 📌 5. 통계 계산 및 요약 리포트 생성
@@ -199,7 +204,7 @@ def generate_summary():
 +--------------------------+------------------+-------------------+--------------------+--------------------+
 | Node Identifier          | Target Cycle(ms) | Measured Avg Cycle| Min / Max Cycle    | Jitter (StdDev)    |
 +--------------------------+------------------+-------------------+--------------------+--------------------+
-| Gateway Loop (Uno C)     | 20.00 ms         | {avg_loop:14.2f} ms | {range_loop:>18s} ms | ±{std_loop:15.2f} ms |
+| Gateway Loop (Uno C)     | 10.00 ms         | {avg_loop:14.2f} ms | {range_loop:>18s} ms | ±{std_loop:15.2f} ms |
 | Uno A Rx (Engine ECU)    | 20.00 ms         | {avg_a:14.2f} ms | {range_a:>18s} ms | ±{std_a:15.2f} ms |
 | Uno B Rx (Seatbelt ECU)  | 100.00 ms         | {avg_b:14.2f} ms | {range_b:>18s} ms | ±{std_b:15.2f} ms |
 +--------------------------+------------------+-------------------+--------------------+--------------------+
@@ -247,7 +252,7 @@ def keyboard_input_thread(ser):
             if not cmd:
                 continue
 
-            if cmd == '1':
+            '''if cmd == '1':
                 ser.write(b">REQ,7E2,0322010000000000\n")
                 print("📤 [UDS TX] SID 0x22 (Speed DID) 송신")
             elif cmd == '2':
@@ -265,6 +270,26 @@ def keyboard_input_thread(ser):
             elif cmd.lower() == 'c':
                 ser.write(b"c\n")
                 print("📤 [CLI TX] 'c' (Clear DTCs) 송신")
+                '''
+            if cmd == '1':
+                ser.write(b">REQ,7EA,0322010000000000\n")
+                log_and_print(f"[{datetime.now().strftime('%H:%M:%S.%f')[:-3]}] 📤 [UDS TX] SID 0x22 (Speed DID) 송신")
+            elif cmd == '2':
+                ser.write(b">REQ,7EA,0322010100000000\n")
+                log_and_print(f"[{datetime.now().strftime('%H:%M:%S.%f')[:-3]}] 📤 [UDS TX] SID 0x22 (Belt DID) 송신")
+            elif cmd == '3':
+                ser.write(b">REQ,7EA,0219020000000000\n")
+                log_and_print(f"[{datetime.now().strftime('%H:%M:%S.%f')[:-3]}] 📤 [UDS TX] SID 0x19 (Read DTC) 송신")
+            elif cmd == '4':
+                ser.write(b">REQ,7EA,0114000000000000\n")
+                log_and_print(f"[{datetime.now().strftime('%H:%M:%S.%f')[:-3]}] 📤 [UDS TX] SID 0x14 (Clear DTC) 송신")
+            elif cmd.lower() == 'r':
+                ser.write(b"r\n")
+                log_and_print(f"[{datetime.now().strftime('%H:%M:%S.%f')[:-3]}] 📤 [CLI TX] 'r' (Print Stored DTCs) 송신")
+            elif cmd.lower() == 'c':
+                ser.write(b"c\n")
+                log_and_print(f"[{datetime.now().strftime('%H:%M:%S.%f')[:-3]}] 📤 [CLI TX] 'c' (Clear DTCs) 송신")
+
         except Exception:
             break
 

@@ -1,0 +1,2 @@
+[21:46:10.874] 📤 [UDS TX] SID 0x22 (Speed DID) 송신
+[21:46:12.720] 📤 [UDS TX] SID 0x22 (Belt DID) 송신

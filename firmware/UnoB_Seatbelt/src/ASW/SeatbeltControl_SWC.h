@@ -20,6 +20,6 @@ typedef struct {
 } Seatbelt_SWC_Type;
 
 void SeatbeltControl_SWC_Init(Seatbelt_SWC_Type* pSwc);
-void Runnable_SeatbeltLogic_50ms(Seatbelt_SWC_Type* pSwc);
+void Runnable_SeatbeltLogic_100ms(Seatbelt_SWC_Type* pSwc);
 
 #endif

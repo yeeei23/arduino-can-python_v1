@@ -66,24 +66,24 @@ void loop() {
         }
     }
 
-    // 3. [Sync Tx] 50ms 고정 주기 스케줄링
+    // 3. [Sync Tx] 100ms 고정 주기 스케줄링
     uint32_t currentMs = millis();
     if (currentMs - g_lastTxTick >= TX_INTERVAL_MS) {
         g_lastTxTick = currentMs;
 
         // ASW 로직 실행 (스위치 상태, Alive Counter 연산 등)
-        Runnable_SeatbeltLogic_50ms(&g_seatbeltSwc);
+        Runnable_SeatbeltLogic_100ms(&g_seatbeltSwc);
 
         // CAN 메시지(0x160) 송신
         bool isTxOk = RTE_Seatbelt_TransmitCanTx(&g_seatbeltSwc);
 
 
-        // 4. Heartbeat LED 제어 (50ms * 10회 = 500ms)
+        // 4. Heartbeat LED 제어 (100ms * 5회 = 500ms)
         static uint8_t txSuccessCounter = 0;
 
         if (isTxOk) {
             txSuccessCounter++;
-            if (txSuccessCounter >= 10) { // 50ms * 10 = 500ms (0.5초)
+            if (txSuccessCounter >= 5) { // 100ms * 5 = 500ms (0.5초)
                 txSuccessCounter = 0;
                 Rte_Call_NOP_ToggleLed();
             }

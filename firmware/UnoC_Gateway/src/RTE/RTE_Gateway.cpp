@@ -40,6 +40,10 @@ void RTE_Gateway_ProcessCanRx(GatewayControl_SWC_Type* pSwc) {
       
         // [1] Uno A (Engine / Speed) 수신
         if (rxPdu.can_id == 0x150) {
+            // [추가] 순수 하드웨어 수신 간격(Delta) 측정 (최초 수신 시 0 방지)
+            if (pSwc->unoA_LastRxTime > 0) {
+                pSwc->unoA_DeltaTime = currentMs - pSwc->unoA_LastRxTime;
+            }
             pSwc->unoA_Alive = rxPdu.data[1];
             pSwc->unoA_LastRxTime = currentMs; 
 
@@ -61,6 +65,10 @@ void RTE_Gateway_ProcessCanRx(GatewayControl_SWC_Type* pSwc) {
      
         // [2] Uno B (Seatbelt) 수신
         else if (rxPdu.can_id == 0x160) {
+            // [추가] 순수 하드웨어 수신 간격(Delta) 측정
+            if (pSwc->unoB_LastRxTime > 0) {
+                pSwc->unoB_DeltaTime = currentMs - pSwc->unoB_LastRxTime;
+            }
             pSwc->unoB_Alive = rxPdu.data[1];
             pSwc->unoB_LastRxTime = currentMs; 
 
@@ -149,8 +157,7 @@ void RTE_Gateway_ProcessSerialRx(GatewayControl_SWC_Type* pSwc) {
                             uint32_t now = millis();
                             pSwc->unoA_LastRxTime = now;
                             pSwc->unoB_LastRxTime = now;
-
-                            Serial.println(F("<RESP,7EA,0154000000000000>"));
+                            
                                                 }
                     }
                 }

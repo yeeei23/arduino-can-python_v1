@@ -23,7 +23,7 @@ void SeatbeltControl_SWC_Init(Seatbelt_SWC_Type* pSwc) {
     s_prevSwFault = false;
 }
 
-void Runnable_SeatbeltLogic_50ms(Seatbelt_SWC_Type* pSwc) {
+void Runnable_SeatbeltLogic_100ms(Seatbelt_SWC_Type* pSwc) {
     if (pSwc == NULL) return;
 
     uint32_t currentMs = millis();

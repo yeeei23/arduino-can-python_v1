@@ -10,8 +10,8 @@ unsigned long lastTaskTime = 0;
 static uint32_t lastLogTime = 0;
 
 
-const unsigned long TASK_INTERVAL = 20; // 20ms 주기 (50Hz)
-const uint32_t LOG_INTERVAL  = 20; // 로그 주기 (20ms)
+const unsigned long TASK_INTERVAL = 10; // 10ms 주기 
+const uint32_t LOG_INTERVAL  = 10; // 로그 주기
 
 // 숫자 2자리 패딩 출력 헬퍼 (01, 09, 15)
 static void PrintDigits2(uint8_t val) {
@@ -61,8 +61,22 @@ void loop() {
     if (currentTime - lastLogTime >= LOG_INTERVAL) {
         lastLogTime = currentTime;
 
-        
-        // [1] Node A (Engine / Pedal) 출력
+        // 포맷: $DATA,<Time>,<Speed>,<Delta_A>,<Belt>,<Delta_B>,<NodeA_Err>,<NodeB_Err>
+        Serial.print(F("$DATA,"));
+        Serial.print(currentTime);
+        Serial.print(F(","));
+        Serial.print(gatewaySwc.unoA_Speed);
+        Serial.print(F(","));
+        Serial.print(gatewaySwc.unoA_DeltaTime);  // <== Alive Counter 대신 DeltaTime 전송
+        Serial.print(F(","));
+        Serial.print(gatewaySwc.unoB_BeltStatus);
+        Serial.print(F(","));
+        Serial.print(gatewaySwc.unoB_DeltaTime);  // <== Alive Counter 대신 DeltaTime 전송
+        Serial.print(F(","));
+        Serial.print(gatewaySwc.unoA_NodeOut);
+        Serial.print(F(","));
+        Serial.println(gatewaySwc.unoB_NodeOut);
+        /*// [1] Node A (Engine / Pedal) 출력
         Serial.print(F(" | "));
         PrintSpeed3(gatewaySwc.unoA_Speed);
         Serial.print(F(" km/h |  #"));
@@ -109,7 +123,7 @@ void loop() {
             Serial.println(F("[ ACTIVE(FAIL) ] |"));
         } else {
             Serial.println(F("[ NORMAL(OK)   ] |"));
-        }
+        }*/
     }
 }
 

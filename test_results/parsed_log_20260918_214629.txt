@@ -1,0 +1,8 @@
+[21:46:32.836] 📤 [UDS TX] SID 0x22 (Speed DID) 송신
+[21:46:33.869] 📤 [UDS TX] SID 0x22 (Belt DID) 송신
+[21:46:34.844] 📤 [UDS TX] SID 0x19 (Read DTC) 송신
+[21:46:35.827] 📤 [UDS TX] SID 0x14 (Clear DTC) 송신
+[21:46:37.891] 📤 [UDS TX] SID 0x22 (Speed DID) 송신
+[21:46:38.662] 📤 [UDS TX] SID 0x22 (Belt DID) 송신
+[21:46:39.435] 📤 [UDS TX] SID 0x19 (Read DTC) 송신
+[21:46:40.177] 📤 [UDS TX] SID 0x14 (Clear DTC) 송신
