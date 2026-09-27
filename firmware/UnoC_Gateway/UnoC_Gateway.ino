@@ -50,14 +50,14 @@ void loop() {
 
     unsigned long currentTime = millis();
 
-    // 3. 20ms 주기 ASW 로직 (타임아웃 감시 & DTC EEPROM 자동 기록 & LED)
+    // 3. 10ms 주기 ASW 로직 (타임아웃 감시 & DTC EEPROM 자동 기록 & LED)
     if (currentTime - lastTaskTime >= TASK_INTERVAL) {
         lastTaskTime = currentTime;
-        Runnable_GatewayLogic_20ms(&gatewaySwc);
+        Runnable_GatewayLogic_10ms(&gatewaySwc);
         RTE_Gateway_UpdateFeedback(&gatewaySwc);
     }
 
-    // 4. 100ms 주기 대시보드 출력
+    // 4. 10ms 주기 대시보드 출력
     if (currentTime - lastLogTime >= LOG_INTERVAL) {
         lastLogTime = currentTime;
 

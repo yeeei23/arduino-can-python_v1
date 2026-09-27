@@ -6,7 +6,7 @@ void RTE_Seatbelt_Init(Seatbelt_SWC_Type* pSwc) {
     SeatbeltControl_SWC_Init(pSwc);
 }
 
-void RTE_Seatbelt_ProcessCanRx(Seatbelt_SWC_Type* pSwc) {
+/*void RTE_Seatbelt_ProcessCanRx(Seatbelt_SWC_Type* pSwc) {
     if (pSwc == NULL) return;
 
     Can_PduType rxPdu;
@@ -25,8 +25,15 @@ void RTE_Seatbelt_ProcessCanRx(Seatbelt_SWC_Type* pSwc) {
             }
         }
     }
+}*/
+// [추천] 함수 호출은 유지하되, 버퍼만 비워서 Hardware Overflow 방지
+void RTE_Seatbelt_ProcessCanRx(Seatbelt_SWC_Type* pSwc) {
+    (void)pSwc;
+    Can_PduType rxPdu;
+    while (CDD_MCP2515_ReadMessage(&rxPdu)) {
+        // 수신 데이터 처리 없이 버퍼만 Clear
+    }
 }
-
 // ASW 데이터를 BSW MCP2515(0x160)로 전달하여 CAN 전송
 bool RTE_Seatbelt_TransmitCanTx(const Seatbelt_SWC_Type* pSwc) {
     if (pSwc == NULL) return;

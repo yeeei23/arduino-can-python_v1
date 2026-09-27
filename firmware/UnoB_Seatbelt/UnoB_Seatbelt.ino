@@ -42,8 +42,8 @@ static void PrintDtcHistory(void) {
 void setup() {
     Serial.begin(115200);
 
-    IoHwAb_Init();
-    CDD_MCP2515_Init();
+    //IoHwAb_Init();
+    //CDD_MCP2515_Init();
     RTE_Seatbelt_Init(&g_seatbeltSwc);
 
     Serial.println(F("[INFO] Uno B (Seatbelt ECU) Initialized."));
@@ -53,7 +53,7 @@ void setup() {
 
 void loop() {
     // 1. [Async Rx] CAN 수신 인터럽트 루틴
-    RTE_Seatbelt_ProcessCanRx(&g_seatbeltSwc);
+    //RTE_Seatbelt_ProcessCanRx(&g_seatbeltSwc);
 
     // 2. [Local Diag] 시리얼 명령어 처리 ('r', 'c')
     if (Serial.available() > 0) {

@@ -239,12 +239,12 @@ def generate_summary():
 # ==============================================================================
 def keyboard_input_thread(ser):
     global is_running
-    print("\n[명령어 안내]")
-    print("  '1' : UDS 0x22 (속도 DID 조회)")
-    print("  '2' : UDS 0x22 (안전벨트 DID 조회)")
-    print("  '3' : UDS 0x19 (DTC & FreezeFrame 조회)")
-    print("  '4' : UDS 0x14 (DTC 전체 삭제)")
-    print("  'r' : EEPROM 전체 출력  |  'c' : EEPROM 전체 초기화\n")
+    log_and_print("\n[명령어 안내]")
+    log_and_print("  '1' : UDS 0x22 (속도 DID 조회)")
+    log_and_print("  '2' : UDS 0x22 (안전벨트 DID 조회)")
+    log_and_print("  '3' : UDS 0x19 (DTC & FreezeFrame 조회)")
+    log_and_print("  '4' : UDS 0x14 (DTC 전체 삭제)")
+    log_and_print("  'r' : EEPROM 전체 출력  |  'c' : EEPROM 전체 초기화\n")
 
     while is_running:
         try:
@@ -252,25 +252,7 @@ def keyboard_input_thread(ser):
             if not cmd:
                 continue
 
-            '''if cmd == '1':
-                ser.write(b">REQ,7E2,0322010000000000\n")
-                print("📤 [UDS TX] SID 0x22 (Speed DID) 송신")
-            elif cmd == '2':
-                ser.write(b">REQ,7E2,0322010100000000\n")
-                print("📤 [UDS TX] SID 0x22 (Belt DID) 송신")
-            elif cmd == '3':
-                ser.write(b">REQ,7E2,0219020000000000\n")
-                print("📤 [UDS TX] SID 0x19 (Read DTC) 송신")
-            elif cmd == '4':
-                ser.write(b">REQ,7E2,0114000000000000\n")
-                print("📤 [UDS TX] SID 0x14 (Clear DTC) 송신")
-            elif cmd.lower() == 'r':
-                ser.write(b"r\n")
-                print("📤 [CLI TX] 'r' (Print Stored DTCs) 송신")
-            elif cmd.lower() == 'c':
-                ser.write(b"c\n")
-                print("📤 [CLI TX] 'c' (Clear DTCs) 송신")
-                '''
+            
             if cmd == '1':
                 ser.write(b">REQ,7EA,0322010000000000\n")
                 log_and_print(f"[{datetime.now().strftime('%H:%M:%S.%f')[:-3]}] 📤 [UDS TX] SID 0x22 (Speed DID) 송신")
@@ -297,16 +279,16 @@ def keyboard_input_thread(ser):
 # 📌 7. 메인 실행 루프
 # ==============================================================================
 if __name__ == "__main__":
-    print("====================================================")
-    print(f" 🚗 Gateway (Uno C: {UNO_C_PORT}) Test Runner Started")
-    print(" 테스트 종료 시 Ctrl + C 를 누르세요.")
-    print("====================================================\n")
+    log_and_print("====================================================")
+    log_and_print(f" 🚗 Gateway (Uno C: {UNO_C_PORT}) Test Runner Started")
+    log_and_print(" 테스트 종료 시 Ctrl + C 를 누르세요.")
+    log_and_print("====================================================\n")
 
     try:
         ser = serial.Serial(UNO_C_PORT, BAUD_RATE, timeout=1)
-        print(f"✅ 우노 C 게이트웨이 포트({UNO_C_PORT}) 연결 성공!\n")
+        log_and_print(f"✅ 우노 C 게이트웨이 포트({UNO_C_PORT}) 연결 성공!\n")
 
-        print("⏳ 부팅 헤더 동기화 대기 중...")
+        log_and_print("⏳ 부팅 헤더 동기화 대기 중...")
 
         # 부팅 시 출력되는 테이블 구분선(---)이 나올 때까지 앞의 깨진 로그는 전부 버림
         while True:
@@ -315,9 +297,9 @@ if __name__ == "__main__":
                 if "------" in init_line or "[ Uno C" in init_line:
                     break  # 게이트웨이 부팅 헤더 감지 완료!
 
-        print("🚀 게이트웨이 동기화 완료! \n")
+        log_and_print("🚀 게이트웨이 동기화 완료! \n")
 
-
+        log_and_print("🚀 게이트웨이 동기화 완료! \n")
 
         start_time = time.time()
 
@@ -333,24 +315,24 @@ if __name__ == "__main__":
                 now_sec = time.time()
                 ts_str = datetime.now().strftime("%H:%M:%S.%f")[:-3]
                 log_entry = f"[{ts_str}] {line}"
-
+# 1. 원본 수신 데이터(raw) 파일 저장
                 with open(raw_log_file, "a", encoding="utf-8") as f:
                     f.write(log_entry + "\n")
 
                 uds_evt = parse_uno_c_line(line, now_sec, ts_str)
-
+                # 2. 파싱 및 가공된 로그 화면 출력 + parsed_log_file 저장
                 if uds_evt:
-                    print(f"🔧 \033[96m{uds_evt}\033[0m")
+                    log_and_print(f"🔧 \033[96m{uds_evt}\033[0m")
                 elif "FAIL" in line or "NODE_OUT" in line:
-                    print(f"🚨 \033[91m{log_entry}\033[0m")
+                    log_and_print(f"🚨 \033[91m{log_entry}\033[0m")
                 elif "NORMAL(OK)" in line:
-                    print(f"   \033[92m{log_entry}\033[0m")
+                    log_and_print(f"   \033[92m{log_entry}\033[0m")
                 else:
-                    print(log_entry)
+                    log_and_print(log_entry)
 
     except KeyboardInterrupt:
         is_running = False
-        print("\n테스트 종료 중... 최종 요약 보고서를 생성합니다.")
+        log_and_print("\n테스트 종료 중... 최종 요약 보고서를 생성합니다.")
         generate_summary()
     except Exception as e:
-        print(f"\n❌ 포트 연결 오류: {e}")
+        log_and_print(f"\n❌ 포트 연결 오류: {e}")

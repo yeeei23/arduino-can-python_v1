@@ -23,6 +23,6 @@ typedef struct {
 } GatewayControl_SWC_Type;
 
 void GatewayControl_SWC_Init(GatewayControl_SWC_Type* pSwc);
-void Runnable_GatewayLogic_20ms(GatewayControl_SWC_Type* pSwc);
+void Runnable_GatewayLogic_10ms(GatewayControl_SWC_Type* pSwc);
 
 #endif

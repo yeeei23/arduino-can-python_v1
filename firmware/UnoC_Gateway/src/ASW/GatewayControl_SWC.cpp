@@ -35,7 +35,7 @@ void GatewayControl_SWC_Init(GatewayControl_SWC_Type* pSwc) {
     s_prevUnoB_NodeOut = false;
 }
 
-void Runnable_GatewayLogic_20ms(GatewayControl_SWC_Type* pSwc) {
+void Runnable_GatewayLogic_10ms(GatewayControl_SWC_Type* pSwc) {
     uint32_t currentMs = millis();
 
  

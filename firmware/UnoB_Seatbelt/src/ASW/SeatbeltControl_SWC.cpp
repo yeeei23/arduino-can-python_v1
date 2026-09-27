@@ -31,7 +31,7 @@ void Runnable_SeatbeltLogic_100ms(Seatbelt_SWC_Type* pSwc) {
     
     // Uno A Node-Out 감지 및 소생(Recovery) 디바운스 로직
     // 1. Uno A Node-Out 감지 (U0100)
-    if (currentMs - pSwc->unoA_LastRxTime > UNOA_TIMEOUT_MS) {
+    /*if (currentMs - pSwc->unoA_LastRxTime > UNOA_TIMEOUT_MS) {
         // [Fault] 100ms 동안 패킷이 없으면 Node-Out 진입 & 소생 카운터 리셋
         pSwc->unoA_NodeOut = true;
         pSwc->unoA_SuccessCount = 0;
@@ -70,7 +70,7 @@ void Runnable_SeatbeltLogic_100ms(Seatbelt_SWC_Type* pSwc) {
         Rte_Call_RP_Diagnostic_SaveFreezeFrame(&frame);
     }
     s_prevNodeOut = pSwc->unoA_NodeOut;
-
+    */
   
     // 3. DIP 스위치 디바운스 (RTE API 경유)
 
